@@ -34,7 +34,7 @@
     <div style="position: fixed; width: 150; top:600; left:300;"><?= isset($headOfPj["createdAt"]) ? dateThai($headOfPj["createdAt"], $headOfPj["createdAt"], "full") : "" ?></div>
 
     <!-- Head of Project (Advisor) -->
-    <div style="position: fixed; width: 190; height:70; top:480; left:500;"><?= isset($advisorOg) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_headOfOg["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 190; height:70; top:480; left:500;"><?= isset($advisorOg) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_advisor["Body"]) . "\">" : "" ?></div>
     <div style="position: fixed; width: 190; top:552; left:500;"><?= isset($advisorOg["name"]) ? $advisorOg["name"] : "" ?></div>
     <div style="position: fixed; width: 150; top:600; left:530;"><?= isset($advisorOg["createdAt"]) ? dateThai($advisorOg["createdAt"], $advisorOg["createdAt"], "full") : "" ?></div>
 
