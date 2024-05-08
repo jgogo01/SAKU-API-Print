@@ -96,7 +96,7 @@
                 <td>
                     จำนวนผู้เข้าร่วมโครงการไม่น้อยกว่า ร้อยละ
                     <span class="underline">&nbsp;&nbsp;<?= $rowPj['percentage_of_project_participants'] ?>&nbsp;&nbsp;</span><br>
-                    ของเป้าหมายที่วางไว้ (จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>คน)
+                    ของเป้าหมายที่วางไว้ (จำนวน<span class="underline">&nbsp;&nbsp;&nbsp; <?= $rowPj["target_set"] ?>&nbsp;&nbsp;&nbsp;</span>คน)
                 </td>
                 <td style="font-size: 14pt">
                     จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>คน<br>
