@@ -14,7 +14,10 @@ $i = 0;
 foreach ($schedule->each_day as $eachDay) {
 ?>
     <br>
-    <h3 style="padding: 0; margin:0;">วันที่ <?= dateThai($eachDay->date, $eachDay->date, "full") ?></h3>
+    <h3 style="padding: 0; margin:0;">
+        วันที่ <?= dateThai($eachDay->date, $eachDay->date, "full") ?>
+        (<?= $eachDay->description ?>)
+    </h3>
     <div style="width:100%; margin-top: 10px;">
         <table width="100%" border="1" style="border-collapse: collapse;">
             <thead>
