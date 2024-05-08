@@ -44,11 +44,12 @@
     <div style="position: fixed; width: 160; top:800; left:60;"><?= isset($sabHead["createdAt"]) ? dateThai($sabHead["createdAt"], $sabHead["createdAt"], "full") : "" ?></div>
 
     <!-- SD AT Staff (Sign) -->
-    <div style="position: fixed; width: 50; height:20; top:800; left:220;"><?= isset($sdStaff) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdStaff["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 50; height:50; top:705; left:220;"><?= isset($sdStaff) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdStaff["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 50; font-size: 12px; top:740; left:218;"><?= isset($sdStaff["createdAt"]) ? dateThai($sdStaff["createdAt"], $sdStaff["createdAt"], "short") : "" ?></div>
 
     <!-- SD AT Head (Sign) -->
     <div style="position: fixed; width: 175; height:50; top:705; left:270;"><?= isset($sdHead) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdHead["Body"]) . "\">" : "" ?></div>
-    <div style="position: fixed; width: 160; top:800; left:290;"><?= isset($sabHead["createdAt"]) ? dateThai($sdHead["createdAt"], $sdHead["createdAt"], "full") : "" ?></div>
+    <div style="position: fixed; width: 160; top:800; left:290;"><?= isset($sdHead["createdAt"]) ? dateThai($sdHead["createdAt"], $sdHead["createdAt"], "full") : "" ?></div>
 
     <!-- SD Financial (Sign) -->
     <div style="position: fixed; width: 175; height:50; top:705; left:500;"><?= isset($sdFinancial) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdFinancial["Body"]) . "\">" : "" ?></div>
@@ -65,8 +66,10 @@
     ?>
 
     <!-- QR Code -->
-    <div style="position: fixed; width: 200; top:850; left:490;">
-        <b>ตรวจสอบได้ที่</b><br>
+    <div style="position: fixed; width: 220; top:840; left:482;">
+        <b>Validate</b><br>
         <barcode code="<?= $GETURL ?>" type="QR" size="1" error="M" disableborder = "1"/><br>
-        <small><?= $_GET["id"] ?></small>
+        <small style="font-size: 16px;"><?= $_GET["id"] ?></small><br>
+        <small style="font-size: 14px;">IP: <?= getUserIP() ?></small><br>
+        <small style="font-size: 14px;">TimeStamp: <?= date('Y-m-d H:i:s') ?></small>
     </div>
