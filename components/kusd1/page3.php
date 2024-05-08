@@ -8,6 +8,11 @@
     $activity_format = str_replace("}", "", $activity_format);
     $activity_format = str_replace("\"", "", $activity_format);
     $activity_format = explode(",", $activity_format);
+
+    $expected_outcome = str_replace("{", "", $rowPj['expected_project_outcome']);
+    $expected_outcome = str_replace("}", "", $expected_outcome);
+    $expected_outcome = str_replace("\"", "", $expected_outcome);
+    $expected_outcome = explode(",", $expected_outcome);
     ?>
     <div style="text-align:start;"><b>หลักการและเหตุผล</b></div>
     <p style="text-align:start;">
@@ -46,6 +51,18 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <?= dateThai($rowPj['date_start_the_project'], $rowPj['date_end_the_project'], "full") ?>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </div>
+
+    <div style="text-align:start;">
+        <b>สถานที่ปฏิบัติงาน</b>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="underline">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?= $rowPj["project_location"] ?>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </span>
@@ -125,11 +142,11 @@
         </tbody>
     </table>
 
-    <div style="text-align:start;"><b>ลักษณะและรูปแบบกิจกรรม</b></div>
+    <div style="text-align:start;"><b>เป้าความสำเร็จของโครงการ (Expected Outcome)</b></div>
     <p style="text-align:start;">
     <ol>
-        <?php foreach ($activity_format as $act) { ?>
-            <li><?= $act ?></li>
+        <?php foreach ($expected_outcome as $epc) { ?>
+            <li><?= $epc ?></li>
         <?php } ?>
     </ol>
     </p>
