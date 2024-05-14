@@ -3,7 +3,6 @@ if (checkDatainArrary($transportation_costs)) {
     $i = 0;
     $totalTransportation = 0;
 ?>
-    <br>
     <h2 style="padding: 0; margin:0;">ค่ายานพาหนะ</h2>
 
     <table width="100%" border="1" style="border-collapse: collapse;">

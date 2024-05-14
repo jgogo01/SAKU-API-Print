@@ -4,20 +4,36 @@ require("utils/function.php");
 
 // Get ID
 if (!isset($_GET['id'])) {
-    header("Location: https://saku.sa.ku.ac.th");
+    http_response_code(400);
+    $stdClass = new stdClass();
+    $stdClass->status = 400;
+    $stdClass->msg = "ท่านเรียกใช้งานไม่ถูกต้อง [ERR-TAG-400]";
+    $stdClass->data = null;
+    header("Content-Type: application/json");
+    exit(json_encode($stdClass));
 }
 
 // Project
 $id = $_GET['id'];
 $rowPj = getDataByAttributes("*", ["id" => $id], "Project", 1);
 if (!isset($rowPj)) {
-    header("Location: https://saku.sa.ku.ac.th/404?msg=ERR-PJ-404");
+    http_response_code(404);
+    $stdClass = new stdClass();
+    $stdClass->status = 404;
+    $stdClass->msg = "ไม่พบโครงการของท่าน [ERR-PJ-404]";
+    $stdClass->data = null;
+    echo json_encode($stdClass);
 }
 
 // Organization
 $rowOg = getDataByAttributes("*", ["id" => $rowPj['organization_orgid']], "Organization", 1);
 if (!isset($rowOg)) {
-    header("Location: https://saku.sa.ku.ac.th/404?msg=ERR-OG-404");
+    http_response_code(400);
+    $stdClass = new stdClass();
+    $stdClass->status = 400;
+    $stdClass->msg = "ไม่พบองค์กรของท่าน กรุณาติดต่อกองพัฒนานิสิต [ERR-OG-400]";
+    $stdClass->data = null;
+    echo json_encode($stdClass);
 }
 
 require("components/kusd1/prepare.php");
@@ -30,18 +46,14 @@ ob_start();
 
 <head>
     <base href="../../../">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>ระบบอนุมัติโครงการออนไลน์ - กองพัฒนานิสิต</title>
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="core/main/images/fav.ico" type="image/x-icon" />
-    <link href="css/kusd1.css" rel="stylesheet" type="text/css" />
+    <?php
+        require("components/header.php");
+    ?>
 </head>
 
 <body>
 
     <?php
-
     require("components/kusd1/page1.php");
 
     //Page 1 Content

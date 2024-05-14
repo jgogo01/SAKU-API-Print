@@ -1,7 +1,6 @@
 <?php
 if (checkDatainArrary($compensation_per_regulations)) {
 ?>
-    <br>
     <h2 style="padding: 0; margin:0;">ค่าตอบแทน (ตามระเบียบเบิกจ่าย)</h2>
 
     <table width="100%" border="1" style="border-collapse: collapse;">

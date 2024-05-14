@@ -1,7 +1,6 @@
 <?php
 if (checkDatainArrary($budgetCheck["speaker_honorarium"])) {
 ?>
-    <br>
     <h2 style="padding: 0; margin:0;">ค่าสมนาคุณวิทยากร (อัตราไม่เกิน 1,000 บาท/คน/ชม.)</h2>
 
     <table width="100%" border="1" style="border-collapse: collapse;">

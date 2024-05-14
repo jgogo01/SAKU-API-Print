@@ -16,9 +16,10 @@ $json = [
                     "Teerut Sitthongdee",
                     "Natdanai Pinaves",
                     "Weeranut Chayakun",
-                    "Kittikun Boontoyut",
+                    "Kittikun Buntoyut",
                     "Krit Poka",
                     "Thatpong Wongchaitha",
+                    "Pittaya Suteerawut",
                     "Chawit Phiphobsophonchai"
                 ]
             ]

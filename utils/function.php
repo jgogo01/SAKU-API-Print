@@ -259,15 +259,33 @@ function getDataByAttributes($select, $conditions, $table, $limit = null, $order
         $conditionCount = count($conditions);
         $conditionIndex = 1;
         foreach ($conditions as $attribute => $value) {
-            if (!is_string($attribute) || !is_string($value)) {
-                throw new InvalidArgumentException('Invalid condition: attribute and value must be strings.');
+            if (!is_string($attribute)) {
+                throw new InvalidArgumentException('Invalid condition: attribute must be a string.');
             }
-            $whereClause .= "\"$attribute\" = $" . $conditionIndex;
-            $params[] = $value;
-            if ($conditionIndex < $conditionCount) {
+
+            if (is_array($value)) {
+                // Handle IN case
+                $whereClause .= "\"$attribute\" IN (";
+                $inParams = array();
+                foreach ($value as $val) {
+                    $inParams[] = '$' . $conditionIndex;
+                    $params[] = $val;
+                    $conditionIndex++;
+                }
+                $whereClause .= implode(', ', $inParams) . ")";
+            } else {
+                // Handle single value case
+                if (!is_string($value)) {
+                    throw new InvalidArgumentException('Invalid condition: value must be a string or an array of strings.');
+                }
+                $whereClause .= "\"$attribute\" = $" . $conditionIndex;
+                $params[] = $value;
+                $conditionIndex++;
+            }
+
+            if ($conditionIndex <= $conditionCount) {
                 $whereClause .= " AND ";
             }
-            $conditionIndex++;
         }
     }
 
@@ -291,8 +309,63 @@ function getDataByAttributes($select, $conditions, $table, $limit = null, $order
 
     $num = pg_num_rows($result);
     if ($num > 0) {
-        return pg_fetch_assoc($result);
+        return pg_fetch_all($result); // Fetch all rows
     }
 
     return null;
 }
+/** 
+ * Get header Authorization
+ * */
+function getAuthorizationHeader(){
+    $headers = null;
+    if (isset($_SERVER['Authorization'])) {
+        $headers = trim($_SERVER["Authorization"]);
+    }
+    else if (isset($_SERVER['HTTP_AUTHORIZATION'])) { //Nginx or fast CGI
+        $headers = trim($_SERVER["HTTP_AUTHORIZATION"]);
+    } elseif (function_exists('apache_request_headers')) {
+        $requestHeaders = apache_request_headers();
+        // Server-side fix for bug in old Android versions (a nice side-effect of this fix means we don't care about capitalization for Authorization)
+        $requestHeaders = array_combine(array_map('ucwords', array_keys($requestHeaders)), array_values($requestHeaders));
+        //print_r($requestHeaders);
+        if (isset($requestHeaders['Authorization'])) {
+            $headers = trim($requestHeaders['Authorization']);
+        }
+    }
+    return $headers;
+}
+
+/**
+ * get access token from header
+ * */
+function getBearerToken() {
+    $headers = getAuthorizationHeader();
+    // HEADER: Get the access token from the header
+    if (!empty($headers)) {
+        if (preg_match('/Bearer\s(\S+)/', $headers, $matches)) {
+            return $matches[1];
+        }
+    }
+    return null;
+}
+
+$arraySDG = [
+    'SDG1' => 'ข้อ 1',
+    'SDG2' => 'ข้อ 2',
+    'SDG3' => 'ข้อ 3',
+    'SDG4' => 'ข้อ 4',
+    'SDG5' => 'ข้อ 5',
+    'SDG6' => 'ข้อ 6',
+    'SDG7' => 'ข้อ 7',
+    'SDG8' => 'ข้อ 8',
+    'SDG9' => 'ข้อ 9',
+    'SDG10' => 'ข้อ 10',
+    'SDG11' => 'ข้อ 11',
+    'SDG12' => 'ข้อ 12',
+    'SDG13' => 'ข้อ 13',
+    'SDG14' => 'ข้อ 14',
+    'SDG15' => 'ข้อ 15',
+    'SDG16' => 'ข้อ 16',
+    'SDG17' => 'ข้อ 17'
+];

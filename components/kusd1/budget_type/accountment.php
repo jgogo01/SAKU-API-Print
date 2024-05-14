@@ -1,7 +1,6 @@
 <?php
 if (checkDatainArrary($budgetCheck["accommodation_costs"])) {
 ?>
-    <br>
     <h2 style="padding: 0; margin:0;">ค่าที่พัก</h2>
 
     <table width="100%" border="1" style="border-collapse: collapse;">

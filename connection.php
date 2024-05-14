@@ -4,7 +4,6 @@ date_default_timezone_set('Asia/Bangkok');
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$id = $_GET['id'];
 //Get Value From ENV
 $DB_HOST = $_ENV['DB_HOST'];
 $DB_PORT = $_ENV['DB_PORT'];

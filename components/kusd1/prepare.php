@@ -5,6 +5,9 @@ $fontDirs = $defaultConfig['fontDir'];
 $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
 $fontData = $defaultFontConfig['fontdata'];
 $mpdf = new \Mpdf\Mpdf([
+    'mode' => 'utf-8',
+    'format' => 'A4',
+    'orientation' => 'P',
     'tempDir' => $_SERVER['DOCUMENT_ROOT']."/temp",
     'fontDir' => array_merge($fontDirs, [
         $_SERVER['DOCUMENT_ROOT'] . "/fonts",
