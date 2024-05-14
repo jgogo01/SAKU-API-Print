@@ -309,7 +309,7 @@ function getDataByAttributes($select, $conditions, $table, $limit = null, $order
 
     $num = pg_num_rows($result);
     if ($num > 0) {
-        return pg_fetch_all($result); // Fetch all rows
+        return pg_fetch_assoc($result); // Fetch all rows
     }
 
     return null;
