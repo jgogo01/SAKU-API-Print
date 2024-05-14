@@ -87,6 +87,16 @@ $tag = "'" . implode("','", $tag) . "'";
 #Get Name Tag (Include SQL Injection)
 $sqlTag = 'SELECT name FROM "Tag" WHERE id IN (' . $tag . ')';
 $resultTag = pg_query($con, $sqlTag);
+//Check Exist Tag
+if (pg_num_rows($resultTag) == 0) {
+    http_response_code(400);
+    $stdClass = new stdClass();
+    $stdClass->status = 400;
+    $stdClass->msg = "ไม่พบข้อมูล Tag ที่ระบุ [ERR-TAG-400]";
+    $stdClass->data = null;
+    header("Content-Type: application/json");
+    exit(json_encode($stdClass));
+}
 $rowTag = pg_fetch_all($resultTag);
 
 # Get DISTINCT Organization
@@ -101,7 +111,7 @@ $sqlTypeOg = 'SELECT DISTINCT orgType.name as org_type_name,
           ON org.org_typeid = orgType.id
 
           WHERE pj."tagId" IN (' . $tag . ')
-          ORDER BY orgType.name ASC;
+          ORDER BY orgType.name DESC;
           ';
 $resultTypeOg = pg_query($con, $sqlTypeOg);
 $rowTypeOg = pg_fetch_all($resultTypeOg);
