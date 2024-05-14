@@ -1,4 +1,39 @@
 <?php
+
+// Get ID
+if (!isset($_GET['id'])) {
+    http_response_code(400);
+    $stdClass = new stdClass();
+    $stdClass->status = 400;
+    $stdClass->msg = "ท่านเรียกใช้งานไม่ถูกต้อง [ERR-TAG-400]";
+    $stdClass->data = null;
+    header("Content-Type: application/json");
+    exit(json_encode($stdClass));
+}
+
+// Project
+$id = $_GET['id'];
+$rowPj = getDataByAttributes("*", ["id" => $id], "Project", 1);
+if (!isset($rowPj)) {
+    http_response_code(404);
+    $stdClass = new stdClass();
+    $stdClass->status = 404;
+    $stdClass->msg = "ไม่พบโครงการของท่าน [ERR-PJ-404]";
+    $stdClass->data = null;
+    echo json_encode($stdClass);
+}
+
+// Organization
+$rowOg = getDataByAttributes("*", ["id" => $rowPj['organization_orgid']], "Organization", 1);
+if (!isset($rowOg)) {
+    http_response_code(400);
+    $stdClass = new stdClass();
+    $stdClass->status = 400;
+    $stdClass->msg = "ไม่พบองค์กรของท่าน กรุณาติดต่อกองพัฒนานิสิต [ERR-OG-400]";
+    $stdClass->data = null;
+    echo json_encode($stdClass);
+}
+
 // Mpdf
 $defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
 $fontDirs = $defaultConfig['fontDir'];

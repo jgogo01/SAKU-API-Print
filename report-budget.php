@@ -1,6 +1,10 @@
 <?php
-require("components/report-budget/prepare.php");
+//Allow CORS
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: *");
 
+require("components/report-budget/prepare.php");
 //Page 1
 ob_start();
 ?>
