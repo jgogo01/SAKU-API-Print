@@ -44,8 +44,7 @@ foreach ($rowTypeOg as $row) {
                 <th width="6%">ผู้เข้าร่วม</th>
                 <th width="20%">สอดคล้องกับ SDGs</th>
                 <th width="10%">งบที่เสนอขอ</th>
-                <th width="10%">งบจัดสสรโดย (อบก.)</th>
-                <th width="10%">งบประมาณที่ได้ (สภา)</th>
+                <th width="10%">งบประมาณที่ได้</th>
             </tr>
             <?php
             $j = 0;
@@ -90,7 +89,6 @@ foreach ($rowTypeOg as $row) {
                         ?>
                     </td>
                     <td style="text-align: right;"><?= number_format($rowBudget["from_budget"]) ?></td>
-                    <td></td>
                     <td style="text-align: right;"><?= number_format($rowBudget["budget"]) ?></td>
                 </tr>
             <?php
