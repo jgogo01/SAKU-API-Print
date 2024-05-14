@@ -31,7 +31,7 @@ if (getBearerToken() == null) {
     }
 
     // Check Role
-    if ($decoded->role != "SAB" && $decoded->role != "SC") {
+    if (!($decoded->role == "SAB" || $decoded->role == "SC")) {
         http_response_code(403);
         $stdClass = new stdClass();
         $stdClass->status = 403;
@@ -42,7 +42,8 @@ if (getBearerToken() == null) {
     }
 }
 
-if (!isset($_POST['type'])) {
+$data = json_decode(file_get_contents("php://input"));
+if (!isset($data->tag)) {
     http_response_code(400);
     $stdClass = new stdClass();
     $stdClass->status = 400;
@@ -79,7 +80,7 @@ $mpdf = new \Mpdf\Mpdf([
 $mpdf->shrink_tables_to_fit = 1;
 
 $role = $decoded->role;
-$tag = $_POST['tag'];
+$tag = $data->tag;
 
 # Prepare Arrart to SQL IN Cause
 $tag = "'" . implode("','", $tag) . "'";
