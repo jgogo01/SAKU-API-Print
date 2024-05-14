@@ -31,7 +31,7 @@ if (getBearerToken() == null) {
     }
 
     // Check Role
-    if (!($decoded->role == "SAB" || $decoded->role == "SC")) {
+    if (!($decoded->role == "SAB") && !($decoded->role == "SC")) {
         http_response_code(403);
         $stdClass = new stdClass();
         $stdClass->status = 403;
