@@ -81,7 +81,7 @@ $mpdf = new \Mpdf\Mpdf([
 #Fix Table Width
 $mpdf->shrink_tables_to_fit = 1;
 
-$role = $decoded->role;
+$role = "SAB";
 $tag = $data->tags;
 
 # Prepare Arrart to SQL IN Cause

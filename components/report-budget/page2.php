@@ -65,20 +65,20 @@ foreach ($rowTypeOg as $row) {
 
                 $resultBudget = pg_query_params($con, $sqlBudget, array($row['id'], $role));
                 $rowBudget = pg_fetch_assoc($resultBudget);
-                //Add Budget Total By Organization
-                $totalBudgetOg += $rowBudget["budget"];
 
                 $sdg = str_replace("{", "", $row['sustainable_development_goals']);
                 $sdg = str_replace("}", "", $sdg);
                 $sdg = explode(",", $sdg);
 
-                //Get Budget Original From SAB
-                $sqlBudgetOg = "SELECT from_budget FROM \"ProjectBudgetHistory\" 
+                //Get Budget Final From SC
+                $sqlBudgetSc = "SELECT budget FROM \"ProjectBudgetHistory\" 
                 WHERE projectid = $1 AND role = $2
                 ORDER BY \"createdAt\" ASC
                 LIMIT 1";
-                $resultBudgetOg = pg_query_params($con, $sqlBudgetOg, array($row['id'], "SAB"));
-                $rowBudgetOg = pg_fetch_assoc($resultBudgetOg);
+                $resultBudgetSc = pg_query_params($con, $sqlBudgetSc, array($row['id'], "SC"));
+                $rowBudgetSc = pg_fetch_assoc($resultBudgetSc);
+                //Sum Total Budget
+                $totalBudgetOg += $rowBudgetSc["budget"] ??= 0;
             ?>
                 <tr>
                     <td><?= $j + 1; ?></td>
@@ -97,9 +97,9 @@ foreach ($rowTypeOg as $row) {
                         }
                         ?>
                     </td>
-                    <td style="text-align: right;"><?= number_format($rowBudgetOg["from_budget"] ??= 0) ?></td>
                     <td style="text-align: right;"><?= number_format($rowBudget["from_budget"] ??= 0) ?></td>
                     <td style="text-align: right;"><?= number_format($rowBudget["budget"] ??= 0) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowBudgetSc["budget"] ??= 0) ?></td>
                 </tr>
             <?php
                 $j++;
