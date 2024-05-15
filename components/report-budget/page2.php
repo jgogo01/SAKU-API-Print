@@ -1,6 +1,7 @@
 <?php
 foreach ($rowTypeOg as $row) {
 ?>
+    <div style="page-break-before:always;"></div>
     <h2><?php echo $row['org_type_name']; ?></h2>
     <?php
     $sqlOg = "SELECT DISTINCT 
