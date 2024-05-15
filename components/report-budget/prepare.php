@@ -11,7 +11,7 @@ if (getBearerToken() == null) {
     http_response_code(401);
     $stdClass = new stdClass();
     $stdClass->status = 401;
-    $stdClass->msg = "กรุณาเข้าสู่ระบบก่อนใช้งาน [ERR-TOKEN-401]";
+    $stdClass->msg = "กรุณาเข้าสู่ระบบก่อนใช้งาน [ERR-TOKEN-404]";
     $stdClass->data = null;
     header("Content-Type: application/json");
     exit(json_encode($stdClass));
@@ -19,7 +19,7 @@ if (getBearerToken() == null) {
     $jwt = getBearerToken();
     $JWT_SECRET = $_ENV['JWT_SECRET'];
     try{
-        JWT::decode($jwt, new Key($JWT_SECRET, 'HS256'));
+        $decoded = JWT::decode($jwt, new Key($JWT_SECRET, 'HS256'));
     } catch (Exception $e) {
         http_response_code(401);
         $stdClass = new stdClass();
@@ -31,19 +31,21 @@ if (getBearerToken() == null) {
     }
 
     // Check Role
-    if (!($decoded->role == "SAB") && !($decoded->role == "SC")) {
-        http_response_code(403);
-        $stdClass = new stdClass();
-        $stdClass->status = 403;
-        $stdClass->msg = "ท่านไม่มีสิทธิ์ใช้งานในส่วนนี้ [ERR-ROLE-403]";
-        $stdClass->data = null;
-        header("Content-Type: application/json");
-        exit(json_encode($stdClass));
+    if ($decoded->role != "SAB") {
+        if ($decoded->role != "SC") {
+            http_response_code(403);
+            $stdClass = new stdClass();
+            $stdClass->status = 403;
+            $stdClass->msg = "ท่านไม่มีสิทธิ์ใช้งานในส่วนนี้ [ERR-ROLE-403]";
+            $stdClass->data = null;
+            header("Content-Type: application/json");
+            exit(json_encode($stdClass));
+        }
     }
 }
 
 $data = json_decode(file_get_contents("php://input"));
-if (!isset($data->tag)) {
+if (!isset($data->tags)) {
     http_response_code(400);
     $stdClass = new stdClass();
     $stdClass->status = 400;
@@ -80,7 +82,7 @@ $mpdf = new \Mpdf\Mpdf([
 $mpdf->shrink_tables_to_fit = 1;
 
 $role = $decoded->role;
-$tag = $data->tag;
+$tag = $data->tags;
 
 # Prepare Arrart to SQL IN Cause
 $tag = "'" . implode("','", $tag) . "'";

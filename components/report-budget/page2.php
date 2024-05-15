@@ -88,8 +88,8 @@ foreach ($rowTypeOg as $row) {
                         }
                         ?>
                     </td>
-                    <td style="text-align: right;"><?= number_format($rowBudget["from_budget"]) ?></td>
-                    <td style="text-align: right;"><?= number_format($rowBudget["budget"]) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowBudget["from_budget"] ??= 0) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowBudget["budget"] ??= 0) ?></td>
                 </tr>
             <?php
                 $j++;
@@ -106,7 +106,6 @@ foreach ($rowTypeOg as $row) {
         </p>
     </p>
 <?php
-
     }
 }
 ?>

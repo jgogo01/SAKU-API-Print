@@ -369,3 +369,25 @@ $arraySDG = [
     'SDG16' => 'ข้อ 16',
     'SDG17' => 'ข้อ 17'
 ];
+
+function jwt_decode($secretKey, $jwt){
+    // แยก JWT ออกเป็น Header, Payload และ Signature
+    list($header, $payload, $signature) = explode('.', $jwt);
+    // decode header และ payload จาก base64
+    $decodedHeader = base64_decode($header);
+    $decodedPayload = base64_decode($payload);
+    // คำนวณ HMAC-SHA256 Signature ของ Header และ Payload จาก secret key
+    $expectedSignature = hash_hmac('sha256', $header.'.'.$payload, $secretKey, true);
+    // decode Signature จาก base64
+    $decodedSignature = base64_decode($signature);
+    // เปรียบเทียบ Signature ที่คำนวณได้กับ Signature ที่อยู่ใน JWT
+    if (hash_equals($decodedSignature, $expectedSignature)) {
+        // Signature ถูกต้อง แปลง payload ให้อยู่ในรูปแบบ array
+        $decodedPayload = json_decode($decodedPayload, true);
+        // คืนค่า payload
+        return $decodedPayload;
+    } else {
+        // Signature ไม่ถูกต้อง
+        return false;
+    }
+}
