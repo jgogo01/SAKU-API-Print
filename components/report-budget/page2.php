@@ -42,8 +42,9 @@ foreach ($rowTypeOg as $row) {
                 <th width="4%">ที่</th>
                 <th width="40%">โครงการ</th>
                 <th width="6%">ผู้เข้าร่วม</th>
-                <th width="20%">สอดคล้องกับ SDGs</th>
+                <th width="10%">สอดคล้องกับ SDGs</th>
                 <th width="10%">งบที่เสนอขอ</th>
+                <th width="10%">จัดสรรโดย อบก.</th>
                 <th width="10%">งบประมาณที่ได้</th>
             </tr>
             <?php
@@ -70,6 +71,14 @@ foreach ($rowTypeOg as $row) {
                 $sdg = str_replace("{", "", $row['sustainable_development_goals']);
                 $sdg = str_replace("}", "", $sdg);
                 $sdg = explode(",", $sdg);
+
+                //Get Budget Original From SAB
+                $sqlBudgetOg = "SELECT from_budget FROM \"ProjectBudgetHistory\" 
+                WHERE projectid = $1 AND role = $2
+                ORDER BY \"createdAt\" ASC
+                LIMIT 1";
+                $resultBudgetOg = pg_query_params($con, $sqlBudgetOg, array($row['id'], "SAB"));
+                $rowBudgetOg = pg_fetch_assoc($resultBudgetOg);
             ?>
                 <tr>
                     <td><?= $j + 1; ?></td>
@@ -80,14 +89,15 @@ foreach ($rowTypeOg as $row) {
                         $k = 0;
                         foreach ($sdg as $sdgItem) {
                             if ($k == 0) {
-                                echo $sdgItem;
+                                echo $arraySDG[$sdgItem] ??= "";
                             } else {
-                                echo ", " . $sdgItem;
+                                echo ", " . $arraySDG[$sdgItem] ??= "";
                             }
                             $k++;
                         }
                         ?>
                     </td>
+                    <td style="text-align: right;"><?= number_format($rowBudgetOg["from_budget"] ??= 0) ?></td>
                     <td style="text-align: right;"><?= number_format($rowBudget["from_budget"] ??= 0) ?></td>
                     <td style="text-align: right;"><?= number_format($rowBudget["budget"] ??= 0) ?></td>
                 </tr>
