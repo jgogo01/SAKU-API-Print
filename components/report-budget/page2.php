@@ -58,7 +58,7 @@ foreach ($rowTypeOg as $row) {
                 }
 
                 #Get Project Budget History
-                $sqlBudget = "SELECT * FROM \"ProjectBudgetHistory\" 
+                $sqlBudget = "SELECT from_budget, budget FROM \"ProjectBudgetHistory\" 
                 WHERE projectid = $1 AND role = $2
                 ORDER BY \"createdAt\" DESC
                 LIMIT 1";
