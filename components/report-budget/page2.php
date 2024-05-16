@@ -1,7 +1,9 @@
 <?php
-foreach ($rowTypeOg as $row) {
+$arrBudgetByTypeOg = [];
+foreach ($rowTypeOg as $rowsTypeOg) {
+    $totalBudgetTypeOg = 0;
 ?>
-    <h2><?php echo $row['org_type_name']; ?></h2>
+    <h2><?php echo $rowsTypeOg['org_type_name']; ?></h2>
     <?php
     $sqlOg = "SELECT DISTINCT 
             org.orgnameth as org_name, 
@@ -11,16 +13,16 @@ foreach ($rowTypeOg as $row) {
             ON pj.organization_orgid = org.id
             WHERE pj.\"tagId\" IN ($tag) 
             AND pj.project_status != 'ProjectRejected'
-            AND org.org_typeid = '" . $row['org_type_id'] . "' 
+            AND org.org_typeid = '" . $rowsTypeOg['org_type_id'] . "' 
             ORDER BY org_name ASC";
 
     // Execute the query with prepared statement
     $resultOg = pg_query($con, $sqlOg);
     $rowOg = pg_fetch_all($resultOg);
 
-    foreach ($rowOg as $row) {
+    foreach ($rowOg as $rowsOg) {
         $totalBudgetOg = 0;
-        echo "<h3>" . $row['org_name'] . "</h3>";
+        echo "<h3>" . $rowsOg['org_name'] . "</h3>";
         $sqlPj = "SELECT 
                 pj.id,
                 pj.project_name_th,
@@ -31,7 +33,7 @@ foreach ($rowTypeOg as $row) {
                 ON pj.organization_orgid = org.id
                 WHERE pj.\"tagId\" IN ($tag) 
                 AND pj.project_status != 'ProjectRejected'
-                AND org.id = '" . $row['org_id'] . "'
+                AND org.id = '" . $rowsOg['org_id'] . "'
                 ORDER BY pj.project_name_th ASC
                 ";
         $resultPj = pg_query($con, $sqlPj);
@@ -49,8 +51,8 @@ foreach ($rowTypeOg as $row) {
             </tr>
             <?php
             $j = 0;
-            foreach ($rowPj as $row) {
-                $number_of_project_participants = json_decode($row['number_of_project_participants'], true);
+            foreach ($rowPj as $rowsPj) {
+                $number_of_project_participants = json_decode($rowsPj['number_of_project_participants'], true);
                 #Sum All Number of Participants
                 $Participants = 0;
                 foreach ($number_of_project_participants as $key => $value) {
@@ -58,15 +60,17 @@ foreach ($rowTypeOg as $row) {
                 }
 
                 #Get Project Budget History
-                $sqlBudget = "SELECT from_budget, budget FROM \"ProjectBudgetHistory\" 
+                $sqlBudget = "SELECT 
+                from_budget, 
+                budget FROM \"ProjectBudgetHistory\"
                 WHERE projectid = $1 AND role = $2
                 ORDER BY \"createdAt\" DESC
                 LIMIT 1";
 
-                $resultBudget = pg_query_params($con, $sqlBudget, array($row['id'], $role));
-                $rowBudget = pg_fetch_assoc($resultBudget);
+                $resultBudget = pg_query_params($con, $sqlBudget, array($rowsPj['id'], $role));
+                $rowPjBudget = pg_fetch_assoc($resultBudget);
 
-                $sdg = str_replace("{", "", $row['sustainable_development_goals']);
+                $sdg = str_replace("{", "", $rowsPj['sustainable_development_goals']);
                 $sdg = str_replace("}", "", $sdg);
                 $sdg = explode(",", $sdg);
 
@@ -75,14 +79,15 @@ foreach ($rowTypeOg as $row) {
                 WHERE projectid = $1 AND role = $2
                 ORDER BY \"createdAt\" ASC
                 LIMIT 1";
-                $resultBudgetSc = pg_query_params($con, $sqlBudgetSc, array($row['id'], "SC"));
+                $resultBudgetSc = pg_query_params($con, $sqlBudgetSc, array($rowsPj['id'], "SC"));
                 $rowBudgetSc = pg_fetch_assoc($resultBudgetSc);
                 //Sum Total Budget
                 $totalBudgetOg += $rowBudgetSc["budget"] ??= 0;
+                $totalBudgetTypeOg += $rowBudgetSc["budget"] ??= 0;
             ?>
                 <tr>
                     <td><?= $j + 1; ?></td>
-                    <td><?= $row['project_name_th']; ?></td>
+                    <td><?= $rowsPj['project_name_th']; ?></td>
                     <td style="text-align: right;"><?= number_format($Participants) ?></td>
                     <td>
                         <?php
@@ -97,8 +102,8 @@ foreach ($rowTypeOg as $row) {
                         }
                         ?>
                     </td>
-                    <td style="text-align: right;"><?= number_format($rowBudget["from_budget"] ??= 0) ?></td>
-                    <td style="text-align: right;"><?= number_format($rowBudget["budget"] ??= 0) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowPjBudget["from_budget"] ??= 0) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowPjBudget["budget"] ??= 0) ?></td>
                     <td style="text-align: right;"><?= number_format($rowBudgetSc["budget"] ??= 0) ?></td>
                 </tr>
             <?php
@@ -119,5 +124,7 @@ foreach ($rowTypeOg as $row) {
     <div style="page-break-after:always;"></div>
 <?php
     }
+    //Add Total Budget Type Organization
+    $arrBudgetByTypeOg[$rowsTypeOg['org_type_name']] = $totalBudgetTypeOg;
 }
 ?>

@@ -43,9 +43,15 @@ ob_start();
     $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
     $mpdf->WriteHTML($html);
 
-    /////////////////////////////////////////////////
+    //Page 3
+    ob_start();
+    require("components/report-budget/page3.php");
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
 
-    // Output a PDF file directly to the browser
+    //Output a PDF file directly to the browser
     $data = $mpdf->OutputBinaryData();
     header('Content-type: application/pdf');
     header('Content-Transfer-Encoding: binary');

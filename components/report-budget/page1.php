@@ -5,23 +5,23 @@
     <h1 style="line-height: 0; padding: 0; margin:0;">
         <?php
         $i = 0;
-        foreach($rowTag as $row){
-            if($i == 0){
+        foreach ($rowTag as $row) {
+            if ($i == 0) {
                 echo $row['name'];
-            }else{
-                echo ", ".$row['name'];
+            } else {
+                echo ", " . $row['name'];
             }
             $i++;
         }
         ?>
     </h1>
-    <br><br><br><br><br><br><br><br>
-    <p style="position:fixed; text-align:center; top:680px; color: #8C8C8C;">
-        หน้าที่ {PAGENO} / {nbpg}
-        รายงานโดย <?= $decoded->name ?> 
-        ตำแหน่ง <?= $decoded->role == "SAB" ? "องค์การบริหาร องค์การนิสิต" : "สภาผู้แทนนิสิต" ?>
-        วันที่ <?= date("d/m/Y") ?>
-        เวลา <?= date("H:i:s") ?>
-        IP Address <?= getUserIP() ?>
-    </p>
 </div>
+
+<p style="position:fixed; text-align:center; top:680px; color: #8C8C8C;">
+    หน้าที่ {PAGENO} / {nbpg} |
+    รายงานโดย <?= $decoded->name ?>
+    ตำแหน่ง <?= $decoded->role == "SAB" ? "องค์การบริหาร องค์การนิสิต" : "สภาผู้แทนนิสิต" ?>
+    วันที่ <?= date("d/m/Y") ?>
+    เวลา <?= date("H:i:s") ?>
+    IP Address <?= getUserIP() ?>
+</p>
