@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <div style="page-break-before:always;"></div>
 <div style="width:100%;">
     <img src="assets/ku_sd_online.png" width="200">
@@ -33,7 +36,7 @@ foreach ($schedule->each_day as $eachDay) {
                 foreach ($eachDay->time as $time) {
                 ?>
                     <tr>
-                        <td><?= $j +1  ?></td>
+                        <td><?= $j + 1  ?></td>
                         <td><?= format_time($time->time_start, $time->time_end, "short") ?></td>
                         <td><?= $time->description ?></td>
                     </tr>
@@ -44,4 +47,9 @@ foreach ($schedule->each_day as $eachDay) {
     </div>
 <?php
 }
+
+//Page 5 Content
+$html = ob_get_contents();
+ob_end_clean();
+$mpdf->WriteHTML($html);
 ?>

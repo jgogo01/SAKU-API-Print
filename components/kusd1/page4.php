@@ -10,6 +10,7 @@ if (
     || checkDatainArrary($budgetCheck["materials_costs"]) || checkDatainArrary($compensation_per_regulations)
     || checkDatainArrary($budgetCheck["other_expenses"])
 ) {
+    ob_start();
     $budget_use = json_decode($rowPj['budget_use']);
 ?>
     <div style="page-break-before:always;"></div>
@@ -27,4 +28,10 @@ if (
     <?php require("budget_type/material.php") ?>
     <?php require("budget_type/compensation_per_regulations.php") ?>
     <?php require("budget_type/other.php") ?>
-<?php } ?>
+    <?php 
+        //Page 4 Content
+        $html = ob_get_contents();
+        ob_end_clean();
+        $mpdf->WriteHTML($html);
+    }
+?>

@@ -13,6 +13,7 @@
     $expected_outcome = str_replace("}", "", $expected_outcome);
     $expected_outcome = str_replace("\"", "", $expected_outcome);
     $expected_outcome = explode(",", $expected_outcome);
+    ob_start();
     ?>
     <div style="text-align:start;"><b>หลักการและเหตุผล</b></div>
     <p style="text-align:start;">
@@ -150,3 +151,9 @@
         <?php } ?>
     </ol>
     </p>
+ <?php
+    //Page 3 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $mpdf->WriteHTML($html);
+?>
