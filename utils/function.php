@@ -123,6 +123,16 @@ function dateThai($start, $end, $type)
             }
             return $output;
             break;
+        case 'full-be':
+            // แสดงรายละเอียดทั้งหมด
+            $output = "";
+            if ($startDate == $endDate) {
+                return $startDay . " " . $thai_months[$startMonth - 1] . " พ.ศ. " . $startYear;
+            } else {
+                return $startDay . " " . $thai_months[$startMonth - 1] . " พ.ศ. " . $startYear . " - " . $endDay . " " . $thai_months[$endMonth - 1] . " พ.ศ. " . $endYear;
+            }
+            return $output;
+            break;
         default:
             break;
     }
