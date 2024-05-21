@@ -1,7 +1,7 @@
 <?php
 
+ob_start();
 if ($rowPj['project_bugdet_require'] > 0) {
-    ob_start();
 ?>
     <!-- 1. Head -->
     <div style="position: fixed; width: 400; top:92; left:70;">กองพัฒนานิสิต</div>
@@ -22,14 +22,14 @@ if ($rowPj['project_bugdet_require'] > 0) {
     <div style="position: fixed; width: 320; top:310; left:90;"><?= baht_text($rowPj['project_bugdet_require']) ?></div>
     <div style="position: fixed; width: 165; top:310; left:520;"><?= number_format($rowPj['project_bugdet_require']) ?></div>
 <?php
-    //Page 6 Content
-    $html = ob_get_contents();
-    ob_end_clean();
-    $mpdf->WriteHTML($html);
-
-    //Template Page 9
-    $mpdf->SetSourceFile("assets/kusd1.pdf");
-    $import_page = $mpdf->ImportPage(9);
-    $mpdf->UseTemplate($import_page);
 }
+//Page 6 Content
+$html = ob_get_contents();
+ob_end_clean();
+$mpdf->WriteHTML($html);
+
+//Template Page 9
+$mpdf->SetSourceFile("assets/kusd1.pdf");
+$import_page = $mpdf->ImportPage(9);
+$mpdf->UseTemplate($import_page);
 ?>

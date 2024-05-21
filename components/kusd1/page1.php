@@ -86,7 +86,7 @@
     $html = ob_get_contents();
     ob_end_clean();
     $mpdf->WriteHTML($html);
-
+    
     //Template Page 1
     $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
     $import_page = $mpdf->ImportPage(1);
