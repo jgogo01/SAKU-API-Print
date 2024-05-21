@@ -58,6 +58,7 @@ ob_start();
     header('Accept-Ranges: bytes');
     header('Cache-Control: max-age=0');
     echo $data;
+    ob_end_flush();
     ?>
 </body>
 
