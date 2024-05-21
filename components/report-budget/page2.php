@@ -116,8 +116,8 @@ foreach ($rowTypeOg as $rowsTypeOg) {
             หน้าที่ {PAGENO} / {nbpg} |
             รายงานโดย <?= $decoded->name ?> 
             ตำแหน่ง <?= $decoded->role == "SAB" ? "องค์การบริหาร องค์การนิสิต" : "สภาผู้แทนนิสิต" ?>
-            วันที่ <?= date("d/m/Y") ?>
-            เวลา <?= date("H:i:s") ?>
+            วันที่ <?= $currDate ?>
+            เวลา <?= $currTime ?>
             IP Address <?= getUserIP() ?>
         </p>
     </p>

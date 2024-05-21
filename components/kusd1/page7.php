@@ -51,7 +51,7 @@ if ($rowPj["outside_kaset"] != null) {
         <barcode code="<?= $GETURL ?>" type="QR" size="1" error="M" disableborder="1" /><br>
         <small style="font-size: 16px;"><?= $_GET["id"] ?></small><br>
         <small style="font-size: 14px;">IP: <?= getUserIP() ?></small><br>
-        <small style="font-size: 14px;">TimeStamp: <?= date('Y-m-d H:i:s') ?></small>
+        <small style="font-size: 14px;">TimeStamp: <?= $currDateTime ?></small>
     </div>
 
 <?php

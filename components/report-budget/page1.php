@@ -17,11 +17,16 @@
     </h1>
 </div>
 
+<?php
+$currDate = date('Y-m-d H:i:s');
+$currTime = date('H:i:s');
+?>
+
 <p style="position:fixed; text-align:center; top:680px; color: #8C8C8C;">
     หน้าที่ {PAGENO} / {nbpg} |
     รายงานโดย <?= $decoded->name ?>
     ตำแหน่ง <?= $decoded->role == "SAB" ? "องค์การบริหาร องค์การนิสิต" : "สภาผู้แทนนิสิต" ?>
-    วันที่ <?= date("d/m/Y") ?>
-    เวลา <?= date("H:i:s") ?>
+    วันที่ <?= $currDate ?>
+    เวลา <?= $currTime ?>
     IP Address <?= getUserIP() ?>
 </p>
