@@ -97,14 +97,23 @@ ob_start();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Page 6
-    ob_start();
-    require("components/kusd1/page6.php");
-    //Page 6 Content
-    $html = ob_get_contents();
-    ob_end_clean();
-    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-    $mpdf->WriteHTML($html);
+    //If have any budget When Add Page 6 form Template
+    if ($rowPj['project_bugdet_require'] > 0) {
+        //Page 6
+        ob_start();
+        require("components/kusd1/page6.php");
+        //Page 6 Content
+        $html = ob_get_contents();
+        ob_end_clean();
+        $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+        $mpdf->WriteHTML($html);
+
+        //Page 6 Template
+        $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
+        $import_page = $mpdf->ImportPage(9);
+        $mpdf->UseTemplate($import_page);
+        $mpdf->AddPage();
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
