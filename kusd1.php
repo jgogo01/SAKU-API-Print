@@ -1,4 +1,7 @@
 <?php
+//Clear Output Buffer
+ob_end_clean();
+
 //Allow CORS
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -98,7 +101,7 @@ ob_start();
     //If have any budget When Add Page 6 form Template
     if ($rowPj['project_bugdet_require'] > 0) {
         //Page 6
-        ob_start();
+        // ob_start();
         require("components/kusd1/page6.php");
         //Page 6 Content
         $html = ob_get_contents();
@@ -107,14 +110,14 @@ ob_start();
         $mpdf->WriteHTML($html);
 
         //Page 6 Template
-        $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
-        $import_page = $mpdf->ImportPage(9);
+        $mpdf->SetSourceFile("assets/SA1-Borrow-Online-v1.pdf");
+        $import_page = $mpdf->ImportPage(1);
         $mpdf->UseTemplate($import_page);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Page 7
+    // Page 7
     ob_start();
     require("components/kusd1/page7.php");
     //Page 7 Content

@@ -20,7 +20,8 @@ if (!isset($rowPj)) {
     $stdClass->status = 404;
     $stdClass->msg = "ไม่พบโครงการของท่าน [ERR-PJ-404]";
     $stdClass->data = null;
-    echo json_encode($stdClass);
+    header("Content-Type: application/json");
+    exit(json_encode($stdClass));
 }
 
 // Organization
@@ -31,7 +32,8 @@ if (!isset($rowOg)) {
     $stdClass->status = 400;
     $stdClass->msg = "ไม่พบองค์กรของท่าน กรุณาติดต่อกองพัฒนานิสิต [ERR-OG-400]";
     $stdClass->data = null;
-    echo json_encode($stdClass);
+    header("Content-Type: application/json");
+    exit(json_encode($stdClass));
 }
 
 // Mpdf
