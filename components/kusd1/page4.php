@@ -1,5 +1,4 @@
 <?php
-ob_start();
 $budgetCheck = json_decode($rowPj['budget_use'], true);
 $transportation_costs = json_decode($rowPj['transportation_costs'], true);
 $compensation_per_regulations = json_decode($rowPj['compensation_per_regulations'], true);
@@ -30,8 +29,4 @@ if (
     <?php require("budget_type/other.php") ?>
 <?php
 }
-//Page 4 Content
-$html = ob_get_contents();
-ob_end_clean();
-$mpdf->WriteHTML($html);
 ?>

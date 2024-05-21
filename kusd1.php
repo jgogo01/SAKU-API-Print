@@ -32,14 +32,92 @@ ob_start();
 
     <?php
     require("components/kusd1/page1.php");
+
+    //Page 1 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    //Template Page 1
+    $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
+    $import_page = $mpdf->ImportPage(1);
+    $mpdf->UseTemplate($import_page);
+    $mpdf->AddPage();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ob_start();
     require("components/kusd1/page2.php");
+
+    //Page 2 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    //Template Page 2
+    $mpdf->SetSourceFile("assets/kusd1.pdf");
+    $import_page = $mpdf->ImportPage(2);
+    $mpdf->UseTemplate($import_page);
+    $mpdf->AddPage();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Page 3
+    ob_start();
     require("components/kusd1/page3.php");
+    //Page 3 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Page 4
+    ob_start();
     require("components/kusd1/page4.php");
+    //Page 4 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Page 5
+    ob_start();
     require("components/kusd1/page5.php");
+    //Page 5 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Page 6
+    ob_start();
     require("components/kusd1/page6.php");
+    //Page 6 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Page 7
+    ob_start();
     require("components/kusd1/page7.php");
+    //Page 7 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
     $mpdf->Output("KUSD1_" . time() . ".pdf", 'I');
-    ob_end_flush();
     ?>
 </body>
 

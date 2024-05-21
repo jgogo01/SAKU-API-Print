@@ -80,16 +80,3 @@
         <small style="font-size: 14px;">IP: <?= getUserIP() ?></small><br>
         <small style="font-size: 14px;">TimeStamp: <?= date('Y-m-d H:i:s') ?></small>
     </div>
-
-<?php
-    //Page 1 Content
-    $html = ob_get_contents();
-    ob_end_clean();
-    $mpdf->WriteHTML($html);
-    
-    //Template Page 1
-    $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
-    $import_page = $mpdf->ImportPage(1);
-    $mpdf->UseTemplate($import_page);
-    $mpdf->AddPage();
-?>

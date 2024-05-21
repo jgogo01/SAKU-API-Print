@@ -1,4 +1,3 @@
-<?php ob_start(); ?>
 <!-- Project Detail-->
 <div style="position: fixed; width: 490; top:45; left:170;"><?= $rowPj['project_name_th'] ?></div>
 <div style="position: fixed; width: 475; top:80; left:185;"><?= $rowPj['project_name_en'] ?></div>
@@ -105,16 +104,3 @@ $sdg = explode(",", $sdg);
 <div style="position: fixed; width: 20; top:976; left:115;"><?= in_array("SDG15", $sdg) ? "/" : "" ?></div>
 <div style="position: fixed; width: 20; top:976; left:402;"><?= in_array("SDG16", $sdg) ? "/" : "" ?></div>
 <div style="position: fixed; width: 20; top:1004; left:115;"><?= in_array("SDG17", $sdg) ? "/" : "" ?></div>
-
-<?php
-//Page 2 Content
-$html = ob_get_contents();
-ob_end_clean();
-$mpdf->WriteHTML($html);
-
-//Template Page 2
-$mpdf->SetSourceFile("assets/kusd1.pdf");
-$import_page = $mpdf->ImportPage(2);
-$mpdf->UseTemplate($import_page);
-$mpdf->AddPage();
-?>

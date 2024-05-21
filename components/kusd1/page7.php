@@ -1,5 +1,4 @@
 <?php
-ob_start();
 if ($rowPj["outside_kaset"] != null) {
     $jsonOutSide = json_decode($rowPj["outside_kaset"]);
 ?>
@@ -55,8 +54,4 @@ if ($rowPj["outside_kaset"] != null) {
 
 <?php
 }
-//Page 7 Content
-$html = ob_get_contents();
-ob_end_clean();
-$mpdf->WriteHTML($html);
 ?>

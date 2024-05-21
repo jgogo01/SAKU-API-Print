@@ -1,6 +1,5 @@
 <?php
 
-ob_start();
 if ($rowPj['project_bugdet_require'] > 0) {
 ?>
     <!-- 1. Head -->
@@ -23,13 +22,4 @@ if ($rowPj['project_bugdet_require'] > 0) {
     <div style="position: fixed; width: 165; top:310; left:520;"><?= number_format($rowPj['project_bugdet_require']) ?></div>
 <?php
 }
-//Page 6 Content
-$html = ob_get_contents();
-ob_end_clean();
-$mpdf->WriteHTML($html);
-
-//Template Page 9
-$mpdf->SetSourceFile("assets/kusd1.pdf");
-$import_page = $mpdf->ImportPage(9);
-$mpdf->UseTemplate($import_page);
 ?>
