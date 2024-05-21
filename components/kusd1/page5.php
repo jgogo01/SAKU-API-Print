@@ -1,4 +1,4 @@
-<div style="page-break-before:always;"></div>
+<div style="page-break-after:always;"></div>
 <div style="width:100%;">
     <img src="assets/ku_sd_online.png" width="200">
     <h3 style="line-height: 0; padding: 0; margin:0;">กำหนดการโครงการ <?= $rowPj['project_name_th'] ?></h3>

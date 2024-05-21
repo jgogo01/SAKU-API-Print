@@ -1,3 +1,5 @@
+<div style="page-break-after:always;"></div>
+
 <!-- 1. Head -->
 <div style="position: fixed; width: 400; top:92; left:70;">กองพัฒนานิสิต</div>
 <div style="position: fixed; width: 130; top:27; left:550;">16400300021</div>

@@ -43,7 +43,6 @@ ob_start();
     $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
     $import_page = $mpdf->ImportPage(1);
     $mpdf->UseTemplate($import_page);
-    $mpdf->AddPage();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +59,6 @@ ob_start();
     $mpdf->SetSourceFile("assets/kusd1.pdf");
     $import_page = $mpdf->ImportPage(2);
     $mpdf->UseTemplate($import_page);
-    $mpdf->AddPage();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -112,7 +110,6 @@ ob_start();
         $mpdf->SetSourceFile("assets/kusd1-v2.pdf");
         $import_page = $mpdf->ImportPage(9);
         $mpdf->UseTemplate($import_page);
-        $mpdf->AddPage();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

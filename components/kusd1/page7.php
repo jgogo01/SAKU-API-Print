@@ -1,8 +1,10 @@
+
 <?php
 if ($rowPj["outside_kaset"] != null) {
     $jsonOutSide = json_decode($rowPj["outside_kaset"]);
-?>
+    ?>
 
+    <div style="page-break-after:always;"></div>
     <div style="width:100%; text-align:center;">
         <img src="assets/ku_sd_online.png" width="200">
     </div>

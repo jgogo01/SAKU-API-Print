@@ -1,3 +1,5 @@
+<div style="page-break-after:always;"></div>
+
 <!-- Project Detail-->
 <div style="position: fixed; width: 490; top:45; left:170;"><?= $rowPj['project_name_th'] ?></div>
 <div style="position: fixed; width: 475; top:80; left:185;"><?= $rowPj['project_name_en'] ?></div>
