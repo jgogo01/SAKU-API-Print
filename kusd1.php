@@ -39,6 +39,7 @@ ob_start();
     require("components/kusd1/page6.php");
     require("components/kusd1/page7.php");
     $mpdf->Output("KUSD1_" . time() . ".pdf", 'I');
+    ob_end_flush();
     ?>
 </body>
 
