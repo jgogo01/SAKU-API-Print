@@ -1,7 +1,4 @@
 <?php
-//Clear Output Buffer
-ob_end_clean();
-
 //Allow CORS
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
