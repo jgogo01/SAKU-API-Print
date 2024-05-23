@@ -2,7 +2,7 @@
 
 <!-- 1. Head -->
 <div style="position: fixed; width: 380; top:75; left:70;">กองพัฒนานิสิต มหาวิทยาลัยเกษตรศาสตร์</div>
-<div style="position: fixed; width: 180; top:9; left:500;"><?= $rowPj["Activity_code"] ?></div>
+<div style="position: fixed; width: 180; top:9; left:500;"><?= $rowPj["activity_code"] ?></div>
 
 <!-- 2. Project -->
 <div style="position: fixed; width: 350; top:125; left:80;"><?= $borrower["name"] ?></div>
