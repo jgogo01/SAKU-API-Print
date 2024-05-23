@@ -98,7 +98,7 @@ ob_start();
     //If have any budget When Add Page 6 form Template
     if ($rowPj['project_bugdet_require'] > 0) {
         //Page 6
-        // ob_start();
+        ob_start();
         require("components/kusd1/page6.php");
         //Page 6 Content
         $html = ob_get_contents();
