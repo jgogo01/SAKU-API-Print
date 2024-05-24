@@ -28,13 +28,13 @@ if (checkDatainArrary($budgetCheck["accommodation_costs"])) {
                     <td>สถานที่พัก @ <?= $accommodation->at ?> จำนวน <?= $accommodation->number_of_nights ?> คืน
                         <br>(คืนละ <?= $accommodation->cost_per_night ?> บาท) ทั้งหมด <?= $accommodation->number_of_people ?> คน
                     </td>
-                    <td style="text-align: right"><?= number_format($accommodation->cost_per_night * $accommodation->number_of_nights * $accommodation->number_of_people) ?></td>
+                    <td style="text-align: right"><?= number_format($accommodation->cost_per_night * $accommodation->number_of_nights * $accommodation->number_of_people, 2) ?></td>
                 </tr>
             <?php $i++;
             } ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalAccommodation) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalAccommodation, 2) ?> บาท</h3>
 <?php
 }
 ?>

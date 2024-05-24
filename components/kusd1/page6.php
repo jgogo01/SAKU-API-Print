@@ -22,17 +22,17 @@
 
 <!-- 3. Budget -->
 <div style="position: fixed; width: 335; top:342; left:90;"><?= baht_text($rowPj['project_bugdet_require']) ?></div>
-<div style="position: fixed; width: 160; top:342; left:530;"><?= number_format($rowPj['project_bugdet_require']) ?></div>
+<div style="position: fixed; width: 160; top:342; left:530;"><?= number_format($rowPj['project_bugdet_require'], 2) ?></div>
 
 <!-- 4. SD -->
 <div style="position: fixed; width: 350; top:535; left:70;">รองอธิการบดีฝ่ายกิจการนิสิตและพัฒนาอย่างยั่งยืน</div>
-<div style="position: fixed; width: 185; top:560; left:470;"><?= number_format($rowPj['project_bugdet_require']) ?></div>
+<div style="position: fixed; width: 185; top:560; left:470;"><?= number_format($rowPj['project_bugdet_require'], 2) ?></div>
 <div style="position: fixed; width: 380; top:583; left:35;"><?= baht_text($rowPj['project_bugdet_require']) ?></div>
 
 <!-- 5. DIR -->
-<div style="position: fixed; width: 200; top:714; left:330;"><?= number_format($rowPj['project_bugdet_require']) ?></div>
+<div style="position: fixed; width: 200; top:714; left:330;"><?= number_format($rowPj['project_bugdet_require'], 2) ?></div>
 <div style="position: fixed; width: 380; top:739; left:35;"><?= baht_text($rowPj['project_bugdet_require']) ?></div>
 
 <!-- 6. RECP -->
-<div style="position: fixed; width: 150; top:898; left:200;"><?= number_format($rowPj['project_bugdet_require']) ?></div>
+<div style="position: fixed; width: 150; top:898; left:200;"><?= number_format($rowPj['project_bugdet_require'], 2) ?></div>
 <div style="position: fixed; width: 270; top:898; left:400;"><?= baht_text($rowPj['project_bugdet_require']) ?></div>

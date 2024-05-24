@@ -46,7 +46,7 @@ if (checkDatainArrary($transportation_costs)) {
                             <?= isset($transportation_costs["kaset"]["bus_driver_compensation"]) ? "<li>ค่าตอบแทนพนักงานขับรถยนต์ (จ-ศ หลัง 16.30 น.)" : "" ?>
                             <?= isset($transportation_costs["kaset"]["driver_overtime_compensation"]) ? "<li>ค่าตอบแทนพนักงานขับรถยนต์ (ส-อา-วันหยุดราชการ)" : "" ?>
                             <?= isset($transportation_costs["kaset"]["bus_driver_compensation"]) ? "<li>ค่าตอบแทนพนักงานขับรถบัสปรับอากาศ" : "" ?>
-                            <?= isset($transportation_costs["kaset"]["fuel_costs"]["distance"]) ? "<li>ค่าน้ำมันเชื่อเพลิง (ประมาณ " . number_format($transportation_costs["kaset"]["fuel_costs"]["distance"]) . " กม.)" : "" ?>
+                            <?= isset($transportation_costs["kaset"]["fuel_costs"]["distance"]) ? "<li>ค่าน้ำมันเชื่อเพลิง (ประมาณ " . number_format($transportation_costs["kaset"]["fuel_costs"]["distance"], 2) . " กม.)" : "" ?>
                             <?php
                             if (isset($transportation_costs["kaset"]["other"])) {
                                 foreach ($transportation_costs["kaset"]["other"] as $other) {
@@ -58,14 +58,14 @@ if (checkDatainArrary($transportation_costs)) {
                     </td>
                     <td style="vertical-align: top; text-align: right">
                         <br>
-                        <?= isset($transportation_costs["kaset"]["bus_driver_compensation"])  ? number_format($transportation_costs["kaset"]["bus_driver_compensation"]) . "</li>" : "" ?>
-                        <?= isset($transportation_costs["kaset"]["driver_overtime_compensation"]) ? number_format($transportation_costs["kaset"]["driver_overtime_compensation"]) . "</li>" : "" ?>
-                        <?= isset($transportation_costs["kaset"]["bus_driver_compensation"]) ? number_format($transportation_costs["kaset"]["bus_driver_compensation"]) . "</li>" : "" ?>
-                        <?= isset($transportation_costs["kaset"]["fuel_costs"]["amount"]) ? number_format($transportation_costs["kaset"]["fuel_costs"]["amount"]) . "</li>" : "" ?>
+                        <?= isset($transportation_costs["kaset"]["bus_driver_compensation"])  ? number_format($transportation_costs["kaset"]["bus_driver_compensation"], 2) . "</li>" : "" ?>
+                        <?= isset($transportation_costs["kaset"]["driver_overtime_compensation"]) ? number_format($transportation_costs["kaset"]["driver_overtime_compensation"], 2) . "</li>" : "" ?>
+                        <?= isset($transportation_costs["kaset"]["bus_driver_compensation"]) ? number_format($transportation_costs["kaset"]["bus_driver_compensation"], 2) . "</li>" : "" ?>
+                        <?= isset($transportation_costs["kaset"]["fuel_costs"]["amount"]) ? number_format($transportation_costs["kaset"]["fuel_costs"]["amount"], 2) . "</li>" : "" ?>
                         <?php
                         if (isset($transportation_costs["kaset"]["other"])) {
                             foreach ($transportation_costs["kaset"]["other"] as $other) {
-                                echo number_format($other["amount"]) . "</li>";
+                                echo number_format($other["amount"], 2) . "</li>";
                             }
                         }
                         ?>
@@ -97,7 +97,7 @@ if (checkDatainArrary($transportation_costs)) {
                             <?= $j != 0 ? "<br>" : "" ?>
                             <?= isset($public["outbound_trip"]) ?
                                 "ขาไป อัตราที่นั่งละ <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
-                                number_format($public["outbound_trip"]["per_seat"]) .
+                                number_format($public["outbound_trip"]["per_seat"], 2) .
                                 "&nbsp;&nbsp;&nbsp;&nbsp;</span> บาท 
                                     จำนวน <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
                                 number_format($public["outbound_trip"]["amount"]) .
@@ -105,7 +105,7 @@ if (checkDatainArrary($transportation_costs)) {
                             ?>
                             <?= isset($public["return_trip"]) ?
                                 "<br>ขากลับ อัตราที่นั่งละ <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
-                                number_format($public["return_trip"]["per_seat"]) .
+                                number_format($public["return_trip"]["per_seat"], 2) .
                                 "&nbsp;&nbsp;&nbsp;&nbsp;</span> บาท 
                                     จำนวน <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
                                 number_format($public["return_trip"]["amount"]) .
@@ -119,15 +119,15 @@ if (checkDatainArrary($transportation_costs)) {
                         <br>
                         <?php foreach ($transportation_costs["public_transport_costs"] as $public) { ?>
                             <?= isset($public["outbound_trip"]) ?
-                                number_format($public["outbound_trip"]["per_seat"] * $public["outbound_trip"]["amount"]) : ""
+                                number_format($public["outbound_trip"]["per_seat"] * $public["outbound_trip"]["amount"], 2) : ""
                             ?>
                             <?= isset($public["return_trip"]) ?
-                                "<br>" . number_format($public["return_trip"]["per_seat"] * $public["return_trip"]["amount"]) : ""
+                                "<br>" . number_format($public["return_trip"]["per_seat"] * $public["return_trip"]["amount"], 2) : ""
                             ?>
                         <?php } ?>
                     </td>
                     <td style="text-align: right">
-                        <?= number_format($totalPublic) ?>
+                        <?= number_format($totalPublic, 2) ?>
                     </td>
                 <tr>
                 <?php } ?>
@@ -157,7 +157,7 @@ if (checkDatainArrary($transportation_costs)) {
                             <?= $j != 0 ? "<br>" : "" ?>
                             <?= isset($train["outbound_trip"]) ?
                                 "ขาไป อัตราที่นั่งละ <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
-                                number_format($train["outbound_trip"]["per_seat"]) .
+                                number_format($train["outbound_trip"]["per_seat"], 2) .
                                 "&nbsp;&nbsp;&nbsp;&nbsp;</span> บาท
                                         จำนวน <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
                                 number_format($train["outbound_trip"]["amount"]) .
@@ -165,7 +165,7 @@ if (checkDatainArrary($transportation_costs)) {
                             ?>
                             <?= isset($train["return_trip"]) ?
                                 "<br>ขากลับ อัตราที่นั่งละ <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
-                                number_format($train["return_trip"]["per_seat"]) .
+                                number_format($train["return_trip"]["per_seat"], 2) .
                                 "&nbsp;&nbsp;&nbsp;&nbsp;</span> บาท 
                                         จำนวน <span style='text-decoration:underline'>&nbsp;&nbsp;&nbsp;&nbsp;" .
                                 number_format($train["return_trip"]["amount"]) .
@@ -179,10 +179,10 @@ if (checkDatainArrary($transportation_costs)) {
                         <br>
                         <?php foreach ($transportation_costs["train_ticket_costs_3rd_class"] as $public) { ?>
                             <?= isset($public["outbound_trip"]) ?
-                                number_format($public["outbound_trip"]["per_seat"] * $public["outbound_trip"]["amount"]) : ""
+                                number_format($public["outbound_trip"]["per_seat"] * $public["outbound_trip"]["amount"], 2) : ""
                             ?>
                             <?= isset($public["return_trip"]) ?
-                                "<br>" . number_format($public["return_trip"]["per_seat"] * $public["return_trip"]["amount"]) : ""
+                                "<br>" . number_format($public["return_trip"]["per_seat"] * $public["return_trip"]["amount"], 2) : ""
                             ?>
                         <?php } ?>
                     </td>
@@ -190,7 +190,7 @@ if (checkDatainArrary($transportation_costs)) {
                 <?php } ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalTransportation) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalTransportation, 2) ?> บาท</h3>
 <?php
 }
 ?>

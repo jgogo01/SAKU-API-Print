@@ -25,13 +25,13 @@ if (checkDatainArrary($budgetCheck["speaker_honorarium"])) {
                 <tr>
                     <td><?= $i ?></td>
                     <td><?= $speaker->detail ?> จำนวน <?= $speaker->perhour ?> ชั่วโมง</td>
-                    <td style="text-align: right"><?= number_format($speaker->hour) ?></td>
+                    <td style="text-align: right"><?= number_format($speaker->hour, 2) ?></td>
                 </tr>
             <?php $i++;
             } ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalSpeaker) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalSpeaker, 2) ?> บาท</h3>
 <?php
 }
 ?>

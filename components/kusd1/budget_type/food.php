@@ -22,7 +22,7 @@ if (checkDatainArrary($budgetCheck["food_and_snack_costs"])) {
                 <tr>
                     <td><?= $i ?></td>
                     <td>อาหาร <?= $foodBudget->meals ?> มื้อ ๆ ละไม่เกิน <?= $foodBudget->max_per_meal_baht ?> บาท จำนวน <?= $foodBudget->num_people_meals ?> คน</td>
-                    <td style="text-align: right"><?= number_format($foodBudget->meals * $foodBudget->max_per_meal_baht * $foodBudget->num_people_meals) ?></td>
+                    <td style="text-align: right"><?= number_format($foodBudget->meals * $foodBudget->max_per_meal_baht * $foodBudget->num_people_meals, 2) ?></td>
                 </tr>
             <?php
             }
@@ -33,14 +33,14 @@ if (checkDatainArrary($budgetCheck["food_and_snack_costs"])) {
                 <tr>
                     <td><?= $i ?></td>
                     <td>อาหารว่าง <?= $foodBudget->snacks_per_day ?> มื้อ ๆ ละไม่เกิน <?= $foodBudget->max_snack_cost_per_meal ?> บาท จำนวน <?= $foodBudget->num_people_snacks ?> คน</td>
-                    <td style="text-align: right"><?= number_format($foodBudget->snacks_per_day * $foodBudget->max_snack_cost_per_meal * $foodBudget->num_people_snacks) ?></td>
+                    <td style="text-align: right"><?= number_format($foodBudget->snacks_per_day * $foodBudget->max_snack_cost_per_meal * $foodBudget->num_people_snacks, 2) ?></td>
                 </tr>
             <?php
             }
             ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalFood) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalFood, 2) ?> บาท</h3>
 <?php
 }
 ?>

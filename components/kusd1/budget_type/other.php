@@ -25,13 +25,13 @@ if (checkDatainArrary($budgetCheck["other_expenses"])) {
                 <tr>
                     <td><?= $i ?></td>
                     <td><?= $other->label ?></td>
-                    <td style="text-align: right"><?= number_format($other->amount) ?></td>
+                    <td style="text-align: right"><?= number_format($other->amount, 2) ?></td>
                 </tr>
             <?php $i++;
             } ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalOther) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalOther, 2) ?> บาท</h3>
 <?php
 }
 ?>

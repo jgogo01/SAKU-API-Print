@@ -2,7 +2,7 @@
     <h2>สรุปภาพรวมแต่ละด้าน มีรายละเอียดดังต่อไปนี้</h2>
     <?php
     foreach ($arrBudgetByTypeOg as $key => $value) {
-        echo "<p>" . $key . " รวมทั้งสิ้น " . "<b>" . number_format($value) . " บาท</b>" .  "</p>";
+        echo "<p>" . $key . " รวมทั้งสิ้น " . "<b>" . number_format($value, 2) . " บาท</b>" .  "</p>";
     }
     ?>
 </div>

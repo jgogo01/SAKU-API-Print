@@ -88,7 +88,7 @@ foreach ($rowTypeOg as $rowsTypeOg) {
                 <tr>
                     <td><?= $j + 1; ?></td>
                     <td><?= $rowsPj['project_name_th']; ?></td>
-                    <td style="text-align: right;"><?= number_format($Participants) ?></td>
+                    <td style="text-align: right;"><?= $Participants ?></td>
                     <td>
                         <?php
                         $k = 0;
@@ -102,16 +102,16 @@ foreach ($rowTypeOg as $rowsTypeOg) {
                         }
                         ?>
                     </td>
-                    <td style="text-align: right;"><?= number_format($rowPjBudget["from_budget"] ??= 0) ?></td>
-                    <td style="text-align: right;"><?= number_format($rowPjBudget["budget"] ??= 0) ?></td>
-                    <td style="text-align: right;"><?= number_format($rowBudgetSc["budget"] ??= 0) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowPjBudget["from_budget"] ??= 0, 2) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowPjBudget["budget"] ??= 0, 2) ?></td>
+                    <td style="text-align: right;"><?= number_format($rowBudgetSc["budget"] ??= 0, 2) ?></td>
                 </tr>
             <?php
                 $j++;
             }
             ?>
         </table>
-        <h4 style="text-align: right;">รวมทั้งสิ้น <?= number_format($totalBudgetOg) ?> บาท</h4>
+        <h4 style="text-align: right;">รวมทั้งสิ้น <?= number_format($totalBudgetOg, 2) ?> บาท</h4>
         <p style="position:fixed; text-align:center; top:680px; color: #8C8C8C;">
             หน้าที่ {PAGENO} / {nbpg} |
             รายงานโดย <?= $decoded->name ?> 

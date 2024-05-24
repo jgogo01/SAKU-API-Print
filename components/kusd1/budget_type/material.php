@@ -25,13 +25,13 @@ if (checkDatainArrary($budgetCheck["materials_costs"])){
                 <tr>
                     <td><?= $i ?></td>
                     <td><?= $material->label ?></td>
-                    <td style="text-align: right"><?= number_format($material->amount) ?></td>
+                    <td style="text-align: right"><?= number_format($material->amount, 2) ?></td>
                 </tr>
             <?php $i++;
             } ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalMaterial) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalMaterial, 2) ?> บาท</h3>
 <?php
 }
 ?>

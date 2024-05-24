@@ -27,13 +27,13 @@ if (checkDatainArrary($compensation_per_regulations)) {
                 <tr>
                     <td><?= $i + 1 ?></td>
                     <td><?= $compensation_per_regulations[$i]["label"] ?></td>
-                    <td style="text-align: right"><?= number_format($compensation_per_regulations[$i]["amount"]) ?></td>
+                    <td style="text-align: right"><?= number_format($compensation_per_regulations[$i]["amount"], 2) ?></td>
                 </tr>
             <?php $i++;
             } ?>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalCPR) ?> บาท</h3>
+    <h3 style="text-align: right">รวม <?= number_format($totalCPR, 2) ?> บาท</h3>
 <?php
 }
 ?>
