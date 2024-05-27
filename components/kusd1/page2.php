@@ -169,7 +169,7 @@ $YEAR = [
 $activityHour = json_decode($rowPj['activity_hours']);
 ?>
 <div style="margin-top:10px; text-align: left !important; margin-left:50px;">
-    <input type="checkbox" <?= isset($activityHour->university_activities) ? "checked=\"checked\"" : "" ?> /> <b>กิจกรรมมหาวิทยาลัย</b>
+    <input type="checkbox" <?= isset($activityHour->university_activities) && !empty($activityHour->university_activities) ? "checked=\"checked\"" : "" ?> /> <b>กิจกรรมมหาวิทยาลัย</b>
     <span class="underline">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -188,7 +188,7 @@ $activityHour = json_decode($rowPj['activity_hours']);
     <b>ชั่วโมง</b>
     <br>
 
-    <input type="checkbox" <?= isset($activityHour->social_activities) ? "checked=\"checked\"" : "" ?> /> <b>กิจกรรมเพื่อสังคม</b>
+    <input type="checkbox" <?= isset($activityHour->social_activities) && !empty($activityHour->social_activities) ? "checked=\"checked\"" : "" ?> /> <b>กิจกรรมเพื่อสังคม</b>
     <span class="underline">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -207,14 +207,14 @@ $activityHour = json_decode($rowPj['activity_hours']);
     <b>ชั่วโมง</b>
     <br>
 
-    <input type="checkbox" <?= isset($activityHour->competency_development_activities) ? "checked=\"checked\"" : "" ?> /> <b>กิจกรรมเสริมสร้างสมรรถนะ</b>
+    <input type="checkbox" <?= isset($activityHour->competency_development_activities) && sumJson($activityHour->competency_development_activities) != 0 ? "checked=\"checked\"" : "" ?> /> <b>กิจกรรมเสริมสร้างสมรรถนะ</b>
     <span class="underline">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <?= isset($activityHour->competency_development_activities)
-            && !empty($activityHour->competency_development_activities)
+            && sumJson($activityHour->competency_development_activities) != 0
             ? sumJson($activityHour->competency_development_activities) : "&nbsp;" ?>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
