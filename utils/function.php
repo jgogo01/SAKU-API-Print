@@ -259,7 +259,11 @@ function getDataByAttributes($select, $conditions, $table, $limit = null, $order
     }
 
     // Prepared statement for security (using parameterized queries)
-    $sql = "SELECT $select FROM \"$table\"";
+    if($select !== "*"){
+        $sql = "SELECT \"$select\" FROM \"$table\"";
+    } else {
+        $sql = "SELECT * FROM \"$table\"";
+    }
 
     $whereClause = "";
     $params = array();

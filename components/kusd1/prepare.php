@@ -61,32 +61,36 @@ $mpdf = new \Mpdf\Mpdf([
 ]);
 $mpdf->shrink_tables_to_fit = 1;
 
-
 $stakeholderTreasurer = json_decode($rowPj['stakeholder_treasurer_json']);
 //Get Stakeholder Leader
 $stakeholderLeader = getDataByAttributes("*", ["id" => $rowPj['stakeholder_leader_uid']], "User");
 //Get Stakeholder Advisor
 $stakeholderAdvisor = getDataByAttributes("*", ["id" => $rowPj['stakeholder_advisor_uid']], "User");
+$borrower = [
+    "name" => "-",
+    "idCode" => "-",
+    "facultyId" => "-",
+];
+$facultyBorrower = [
+    "name" => "-"
+];
 //Get Borrower (Optional)
 if ($rowPj['borrowerid'] != null) {
     $borrower = getDataByAttributes("*", ["id" => $rowPj['borrowerid']], "User");
     //Get Borrower Faculty
     $facultyBorrower = getDataByAttributes("name", ["id" => $borrower['facultyId']], "Faculty");
+
+    //Delete Left String "b" from $borrower['idCode']
+    $borrower['idCode'] = substr($borrower['idCode'], 1);
 }
-$borrower = [
-    "name" => "-",
-    "idCode" => "-",
-    "facultyId" => "-"
-];
-$facultyBorrower = [
-    "name" => "-"
-];
 
 //Get Head of Project (From ESignature - READ ONLY)
 $headOfPj = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_OG_PJ_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_headOfPj = null;
 if ($headOfPj != null) {
     $sign_headOfPj = getObjectFromS3($headOfPj["image"], "saku-prod-signature");
+    //Get Faculty & Phone From User Table
+    $headOfPjUser = getDataByAttributes("*", ["id" => $headOfPj["userid"]], "User");
 }
 //Get Head of Organization (From ESignature - READ ONLY)
 $headOfOg = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_OG_HD_Approved"], "ESignature", 1, "createdAt", "DESC");
@@ -99,6 +103,8 @@ $advisorOg = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStat
 $sign_advisor = null;
 if ($advisorOg != null) {
     $sign_advisor = getObjectFromS3($advisorOg["image"], "saku-prod-signature");
+    //Get Phone From User Table
+    $advisorOgUser = getDataByAttributes("PhoneNumber", ["id" => $advisorOg["userid"]], "User");
 }
 //Get SAB Head (From ESignature - READ ONLY)
 $sabHead = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_SAB_HD_Approved"], "ESignature", 1, "createdAt", "DESC");
@@ -128,4 +134,7 @@ if ($sdFinancial != null) {
 $sign_sdDirector = getObjectFromS3("SIGN-DIR-SDKU67.png", "saku-prod-signature");
 //Get KU Vice Director (From ESignature - READ ONLY)
 $sign_kuViceDirector = getObjectFromS3("SIGN-CO-DIRKU67.png", "saku-prod-signature");
+
+$currDate = date('Y-m-d');
+$currTime = date('H:i:s');
 ?>

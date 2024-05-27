@@ -1,32 +1,75 @@
-<?php
-$budgetCheck = json_decode($rowPj['budget_use'], true);
-$transportation_costs = json_decode($rowPj['transportation_costs'], true);
-$compensation_per_regulations = json_decode($rowPj['compensation_per_regulations'], true);
+<!-- <div style="page-break-before:always;"></div> -->
 
-//Check if have any budget
-if (
-    checkDatainArrary($budgetCheck["food_and_snack_costs"]) || checkDatainArrary($budgetCheck["accommodation_costs"])
-    || checkDatainArrary($transportation_costs) || checkDatainArrary($budgetCheck["speaker_honorarium"])
-    || checkDatainArrary($budgetCheck["materials_costs"]) || checkDatainArrary($compensation_per_regulations)
-    || checkDatainArrary($budgetCheck["other_expenses"])
-) {
-    $budget_use = json_decode($rowPj['budget_use']);
-?>
-    <div style="page-break-after:always;"></div>
-    <div style="width:100%;">
-        <img src="assets/ku_sd_online.png" width="200">
-        <h3 style="line-height: 0; padding: 0; margin:0;">ประมาณการค่าใช้จ่ายในการดำเนินโครงการ <?= $rowPj['project_name_th'] ?></h3>
-        <h4>วันที่ <?= dateThai($rowPj['date_start_the_project'], $rowPj['date_end_the_project'], "full") ?></h4>
-        <h4>ณ <?= $rowPj['project_location'] ?></h4>
-    </div>
+<div style="text-align:start;"><b>ดัชนีชี้วันความสำเร็จของโครงการ</b></div>
+<table width="100%" border="1" style="border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th rowspan="2" colspan="2">ดัชนีชี้วันความสำเร็จ การดำเนินงานภาพรวม</th>
+            <th colspan="3">ผลการดำเนินงาน</th>
+        </tr>
+        <tr>
+            <th>คณะทำงาน</th>
+            <th>ผู้เข้าร่วม<br>(นิสิต)</th>
+            <th>บุคคลทั่วไป<br>(ถ้ามี)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1.</td>
+            <td>
+                จำนวนผู้เข้าร่วมโครงการไม่น้อยกว่า ร้อยละ
+                <span class="underline">&nbsp;&nbsp;<?= $rowPj['percentage_of_project_participants'] ?>&nbsp;&nbsp;</span><br>
+                ของเป้าหมายที่วางไว้ (จำนวน<span class="underline">&nbsp;&nbsp;&nbsp; <?= $rowPj["target_set"] ?>&nbsp;&nbsp;&nbsp;</span>คน)
+            </td>
+            <td style="font-size: 14pt">
+                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>คน<br>
+                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <input type="checkbox" /> บรรลุ<br>
+                <input type="checkbox" /> ไม่บรรลุ
+            </td>
+            <td style="font-size: 14pt">
+                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>คน<br>
+                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <input type="checkbox" /> บรรลุ<br>
+                <input type="checkbox" /> ไม่บรรลุ
+            </td>
+            <td style="font-size: 14pt">
+                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>คน<br>
+                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <input type="checkbox" /> บรรลุ<br>
+                <input type="checkbox" /> ไม่บรรลุ
+            </td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>
+                มีค่าเฉลี่ยความพึงพอใจ ไม่น้อยกว่า <span class="underline">4.00</span><br>
+                จากคะแนนเต็ม 5
+            </td>
+            <td style="font-size: 14pt">
+                ค่าเฉลี่ย<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <input type="checkbox" /> บรรลุ<br>
+                <input type="checkbox" /> ไม่บรรลุ
+            </td>
+            <td style="font-size: 14pt">
+                ค่าเฉลี่ย<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <input type="checkbox" /> บรรลุ<br>
+                <input type="checkbox" /> ไม่บรรลุ
+            </td>
+            <td style="font-size: 14pt">
+                ค่าเฉลี่ย<span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <input type="checkbox" /> บรรลุ<br>
+                <input type="checkbox" /> ไม่บรรลุ
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-    <?php require("budget_type/food.php") ?>
-    <?php require("budget_type/accountment.php") ?>
-    <?php require("budget_type/transportation.php") ?>
-    <?php require("budget_type/speaker_honorarium.php") ?>
-    <?php require("budget_type/material.php") ?>
-    <?php require("budget_type/compensation_per_regulations.php") ?>
-    <?php require("budget_type/other.php") ?>
-<?php
-}
-?>
+<div style="text-align:start;"><b>เป้าความสำเร็จของโครงการ (Expected Outcome)</b></div>
+<p style="text-align:start;">
+<ol>
+    <?php foreach ($expected_outcome as $epc) { ?>
+        <li><?= $epc ?></li>
+    <?php } ?>
+</ol>
+</p>

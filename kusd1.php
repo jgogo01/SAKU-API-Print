@@ -46,6 +46,7 @@ ob_start();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Page 2
     ob_start();
     require("components/kusd1/page2.php");
 
@@ -54,11 +55,6 @@ ob_start();
     ob_end_clean();
     $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
     $mpdf->WriteHTML($html);
-
-    //Template Page 2
-    $mpdf->SetSourceFile("assets/kusd1.pdf");
-    $import_page = $mpdf->ImportPage(2);
-    $mpdf->UseTemplate($import_page);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -95,18 +91,29 @@ ob_start();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //If have any budget When Add Page 6 form Template
+    //Page 6
+    ob_start();
+    require("components/kusd1/page6.php");
+    //Page 6 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //If have any budget When Add Page 7 form Template
     if ($rowPj['project_bugdet_require'] > 0) {
-        //Page 6
+        //Page 7
         ob_start();
-        require("components/kusd1/page6.php");
-        //Page 6 Content
+        require("components/kusd1/page7.php");
+        //Page 7 Content
         $html = ob_get_contents();
         ob_end_clean();
         $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
         $mpdf->WriteHTML($html);
 
-        //Page 6 Template
+        //Page 7 Template
         $mpdf->SetSourceFile("assets/SA1-Borrow-Online-v1.pdf");
         $import_page = $mpdf->ImportPage(1);
         $mpdf->UseTemplate($import_page);
@@ -114,10 +121,10 @@ ob_start();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Page 7
+    // Page 8
     ob_start();
-    require("components/kusd1/page7.php");
-    //Page 7 Content
+    require("components/kusd1/page8.php");
+    //Page 8 Content
     $html = ob_get_contents();
     ob_end_clean();
     $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');

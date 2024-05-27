@@ -1,47 +1,32 @@
-<div style="page-break-after:always;"></div>
-<div style="width:100%;">
-    <img src="assets/ku_sd_online.png" width="200">
-    <h3 style="line-height: 0; padding: 0; margin:0;">กำหนดการโครงการ <?= $rowPj['project_name_th'] ?></h3>
-    <h4>วันที่ <?= dateThai($rowPj['date_start_the_project'], $rowPj['date_end_the_project'], "full") ?></h4>
-    <h4>ณ <?= $rowPj['project_location'] ?></h4>
-</div>
-
 <?php
-//Page 5
-$schedule = json_decode($rowPj['schedule']);
+$budgetCheck = json_decode($rowPj['budget_use'], true);
+$transportation_costs = json_decode($rowPj['transportation_costs'], true);
+$compensation_per_regulations = json_decode($rowPj['compensation_per_regulations'], true);
 
-$i = 0;
-foreach ($schedule->each_day as $eachDay) {
+//Check if have any budget
+if (
+    checkDatainArrary($budgetCheck["food_and_snack_costs"]) || checkDatainArrary($budgetCheck["accommodation_costs"])
+    || checkDatainArrary($transportation_costs) || checkDatainArrary($budgetCheck["speaker_honorarium"])
+    || checkDatainArrary($budgetCheck["materials_costs"]) || checkDatainArrary($compensation_per_regulations)
+    || checkDatainArrary($budgetCheck["other_expenses"])
+) {
+    $budget_use = json_decode($rowPj['budget_use']);
 ?>
-    <br>
-    <h3 style="padding: 0; margin:0;">
-        วันที่ <?= dateThai($eachDay->date, $eachDay->date, "full") ?>
-        (<?= $eachDay->description ?>)
-    </h3>
-    <div style="width:100%; margin-top: 10px;">
-        <table width="100%" border="1" style="border-collapse: collapse;">
-            <thead>
-                <tr style="background-color: #d5eaf7">
-                    <th width="5%">ที่</th>
-                    <th width="20%">เวลา</th>
-                    <th width="75%">กิจกรรม</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $j = 0;
-                foreach ($eachDay->time as $time) {
-                ?>
-                    <tr>
-                        <td><?= $j + 1  ?></td>
-                        <td><?= format_time($time->time_start, $time->time_end, "short") ?></td>
-                        <td><?= $time->description ?></td>
-                    </tr>
-                <?php $j++;
-                } ?>
-            </tbody>
-        </table>
+    <div style="page-break-after:always;"></div>
+    <div style="width:100%;">
+        <img src="assets/ku_sd_online.png" width="200">
+        <h3 style="line-height: 0; padding: 0; margin:0;">ประมาณการค่าใช้จ่ายในการดำเนินโครงการ <?= $rowPj['project_name_th'] ?></h3>
+        <h4>วันที่ <?= dateThai($rowPj['date_start_the_project'], $rowPj['date_end_the_project'], "full") ?></h4>
+        <h4>ณ <?= $rowPj['project_location'] ?></h4>
     </div>
+
+    <?php require("budget_type/food.php") ?>
+    <?php require("budget_type/accountment.php") ?>
+    <?php require("budget_type/transportation.php") ?>
+    <?php require("budget_type/speaker_honorarium.php") ?>
+    <?php require("budget_type/material.php") ?>
+    <?php require("budget_type/compensation_per_regulations.php") ?>
+    <?php require("budget_type/other.php") ?>
 <?php
 }
 ?>

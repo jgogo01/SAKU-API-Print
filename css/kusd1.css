@@ -46,6 +46,13 @@ p{
 
 .underline{
     width: 100%;
-    border-style: dotted;
-    border-bottom: 1px solid black;
+    border-style: solid;
+    border-bottom: 0.7px solid black;
+}
+
+.checkbox{
+    min-width: 10px;
+    display: inline;
+    stroke: 1px solid black;
+    background-color: greenyellow; 
 }

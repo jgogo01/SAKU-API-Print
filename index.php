@@ -1,4 +1,9 @@
 <?php
+$output = exec('git log -1 --format="%H %ci"'); // Get last commit hash and date (ISO format)
+$commit_data = explode(' ', $output);
+$last_commit_id = $commit_data[0];
+$last_commit_date = $commit_data[1] . ' ' . $commit_data[2];
+
 header("Content-Type: application/json");
 $json = [
     "status" => 200,
@@ -8,6 +13,10 @@ $json = [
         "description" => "API for SAKU System",
         "version" => "1.0.0",
         "author" => "Kasetsart University",
+        "version" => [
+            "commitID" => $last_commit_id,
+            "timeStamp" => $last_commit_date,
+        ],
         "developer" => [
             "name" => "SAKU Team",
             "team" => [
