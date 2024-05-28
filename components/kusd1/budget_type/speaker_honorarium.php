@@ -29,9 +29,13 @@ if (checkDatainArrary($budgetCheck["speaker_honorarium"])) {
                 </tr>
             <?php $i++;
             } ?>
+            <tr style="background-color:#f5fcf0;">
+                <td colspan="2" style="text-align: center"><b>รวม</b></td>
+                <td style="text-align: right"><?= number_format($totalSpeaker, 2) ?></td>
+            </tr>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalSpeaker, 2) ?> บาท</h3>
+    <br>
 <?php
 }
 ?>

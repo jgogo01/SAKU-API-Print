@@ -11,7 +11,6 @@ if (checkDatainArrary($budgetCheck["other_expenses"])) {
             </tr>
         </thead>
         <tbody>
-
             <?php
             //Loop For Sum Budget Use
             $totalOther = 0;
@@ -29,9 +28,13 @@ if (checkDatainArrary($budgetCheck["other_expenses"])) {
                 </tr>
             <?php $i++;
             } ?>
+            <tr style="background-color:#f5fcf0;">
+                <td colspan="2" style="text-align: center"><b>รวม</b></td>
+                <td style="text-align: right"><?= number_format($totalOther, 2) ?></td>
+            </tr>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalOther, 2) ?> บาท</h3>
+    <br>
 <?php
 }
 ?>

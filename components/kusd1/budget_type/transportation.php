@@ -4,7 +4,6 @@ if (checkDatainArrary($transportation_costs)) {
     $totalTransportation = 0;
 ?>
     <h2 style="padding: 0; margin:0;">ค่ายานพาหนะ</h2>
-
     <table width="100%" border="1" style="border-collapse: collapse;">
         <thead>
             <tr style="background-color: #eaffd9;">
@@ -188,9 +187,13 @@ if (checkDatainArrary($transportation_costs)) {
                     </td>
                 <tr>
                 <?php } ?>
+                <tr style="background-color:#f5fcf0;">
+                    <td colspan="2" style="text-align: center"><b>รวม</b></td>
+                    <td style="text-align: right"><?= number_format($totalTransportation, 2) ?></td>
+                </tr>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalTransportation, 2) ?> บาท</h3>
+    <br>
 <?php
 }
 ?>

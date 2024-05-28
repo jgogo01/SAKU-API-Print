@@ -22,22 +22,19 @@ foreach ($schedule->each_day as $eachDay) {
         <table width="100%" border="1" style="border-collapse: collapse;">
             <thead>
                 <tr style="background-color: #d5eaf7">
-                    <th width="5%">ที่</th>
                     <th width="20%">เวลา</th>
                     <th width="75%">กิจกรรม</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $j = 0;
                 foreach ($eachDay->time as $time) {
                 ?>
                     <tr>
-                        <td><?= $j + 1  ?></td>
                         <td><?= format_time($time->time_start, $time->time_end, "short") ?></td>
                         <td><?= $time->description ?></td>
                     </tr>
-                <?php $j++;
+                <?php
                 } ?>
             </tbody>
         </table>

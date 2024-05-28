@@ -1,8 +1,7 @@
 <?php
 if (checkDatainArrary($budgetCheck["accommodation_costs"])) {
 ?>
-    <h2 style="padding: 0; margin:0;">ค่าที่พัก</h2>
-
+    <h2 style="padding: 0; margin:0;">ค่าที่พัก (จำนวนเงินไม่เกิน 300 บาท/คน/คืน)</h2>
     <table width="100%" border="1" style="border-collapse: collapse;">
         <thead>
             <tr style="background-color: #eaffd9;">
@@ -32,9 +31,13 @@ if (checkDatainArrary($budgetCheck["accommodation_costs"])) {
                 </tr>
             <?php $i++;
             } ?>
+            <tr style="background-color:#f5fcf0;">
+                <td colspan="2" style="text-align: center"><b>รวม</b></td>
+                <td style="text-align: right"><?= number_format($totalAccommodation, 2) ?></td>
+            </tr>
         </tbody>
     </table>
-    <h3 style="text-align: right">รวม <?= number_format($totalAccommodation, 2) ?> บาท</h3>
+    <br>
 <?php
 }
 ?>
