@@ -3,7 +3,13 @@ if (checkDatainArrary($transportation_costs)) {
     $i = 0;
     $totalTransportation = 0;
 ?>
+    <br>
     <h2 style="padding: 0; margin:0;">ค่ายานพาหนะ</h2>
+    <small>
+        คำอธิบาย: กรณีการจ้างเหมาเช่ายานพาหนะ<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;1. ต้องมีเอกสารตอบกลับจากกองกายภาพฯ ว่าไม่สามารถอนุมัติได้ตามที่ขอ<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;2. ต้องขอใบเสนอราคาจากคนขับ หรือบริษัทส่งให้งานกิจกรรมนิสิต ทำเรื่องขออนุมัติจัดซื้อต่อไป
+    </small>
     <table width="100%" border="1" style="border-collapse: collapse;">
         <thead>
             <tr style="background-color: #eaffd9;">
@@ -49,7 +55,7 @@ if (checkDatainArrary($transportation_costs)) {
                             <?php
                             if (isset($transportation_costs["kaset"]["other"])) {
                                 foreach ($transportation_costs["kaset"]["other"] as $other) {
-                                    echo "<li>" . $other["label"] . "</li>";
+                                    echo "<li>อื่น ๆ " . $other["label"];
                                 }
                             }
                             ?>
@@ -125,9 +131,6 @@ if (checkDatainArrary($transportation_costs)) {
                             ?>
                         <?php } ?>
                     </td>
-                    <td style="text-align: right">
-                        <?= number_format($totalPublic, 2) ?>
-                    </td>
                 <tr>
                 <?php } ?>
 
@@ -187,6 +190,33 @@ if (checkDatainArrary($transportation_costs)) {
                     </td>
                 <tr>
                 <?php } ?>
+
+                <!-- ETC -->
+                <?php
+                $totalEtc = 0;
+                if (isset($transportation_costs["etc"])) {
+                    $i++;
+                ?>
+                <tr>
+                    <td><?= $i ?></td>
+                    <td><b>อื่น ๆ เช่น การจ้างเหมาเช่ายานพาหนะ</b><br>
+                        <?php
+                        foreach ($transportation_costs["etc"] as $etc) { ?>
+                            <?= "<li>" . $etc["label"] ?>
+                        <?php
+                        } ?>
+                    </td>
+                    <td style="text-align: right">
+                        <br>
+                        <?php foreach ($transportation_costs["etc"] as $etc) { ?>
+                            <?= number_format($etc["amount"], 2) . "</li>" ?>
+                        <?php }
+                        $totalTransportation += $etc["amount"];
+                        ?>
+                    </td>
+                <tr>
+                <?php } ?>
+
                 <tr style="background-color:#f5fcf0;">
                     <td colspan="2" style="text-align: center"><b>รวม</b></td>
                     <td style="text-align: right"><?= number_format($totalTransportation, 2) ?></td>

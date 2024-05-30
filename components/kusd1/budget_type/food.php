@@ -5,7 +5,7 @@ if (checkDatainArrary($budgetCheck["food_and_snack_costs"])) {
     $totalFood = 0;
 ?>
     <h2 style="padding: 0; margin:0;">ค่าอาหารและอาหารว่าง</h2>
-
+    <small>คำอธิบาย: หากซื้อสินค้าจากร้านเดียวกันตั้งแต่ 10,000 บาท ขึ้นไป ต้องนำใบเสนอราคาจากร้านค้า ส่งให้งานกิจกรรมนิสิต ทำเรื่องขออนุมัติจัดซื้อต่อไป</small>
     <table width="100%" border="1" style="border-collapse: collapse;">
         <thead>
             <tr style="background-color: #eaffd9;">

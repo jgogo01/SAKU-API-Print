@@ -1,8 +1,9 @@
 <?php
 if (checkDatainArrary($budgetCheck["speaker_honorarium"])) {
 ?>
+    <br>
     <h2 style="padding: 0; margin:0;">ค่าสมนาคุณวิทยากร (อัตราไม่เกิน 1,000 บาท/คน/ชม.)</h2>
-
+    <small>คำอธิบาย: ต้องมีหนังสือเชิญเป็นวิทยากรที่ออกโดยมหาวิทยาลัยเพื่อประกอบการเบิกจ่าย</small>
     <table width="100%" border="1" style="border-collapse: collapse;">
         <thead>
             <tr style="background-color: #eaffd9;">
@@ -12,7 +13,7 @@ if (checkDatainArrary($budgetCheck["speaker_honorarium"])) {
             </tr>
         </thead>
         <tbody>
-        <?php
+            <?php
             //Loop For Sum Budget Use
             $totalSpeaker = 0;
             foreach ($budget_use->speaker_honorarium as $speaker) {

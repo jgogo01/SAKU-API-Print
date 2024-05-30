@@ -1,7 +1,9 @@
 <?php
 if (checkDatainArrary($budgetCheck["accommodation_costs"])) {
 ?>
+    <br>
     <h2 style="padding: 0; margin:0;">ค่าที่พัก (จำนวนเงินไม่เกิน 300 บาท/คน/คืน)</h2>
+    <small>คำอธิบาย: ต้องนำใบเสนอราคาค่าที่พัก ส่งให้งานกิจกรรมนิสิต ทำเรื่องขออนุมัติจัดซื้อต่อไป</small>
     <table width="100%" border="1" style="border-collapse: collapse;">
         <thead>
             <tr style="background-color: #eaffd9;">

@@ -27,6 +27,9 @@ if (
     <?php require("budget_type/material.php") ?>
     <?php require("budget_type/compensation_per_regulations.php") ?>
     <?php require("budget_type/other.php") ?>
+    <small>
+        <b>หมายเหตุ</b> ใบเสนอราคาต้องส่งงานกิจกรรมนิสิตก่อนจัดโครงการ ไม่น้อยกว่า 15 วันทำการ
+    </small>
 <?php
 }
 ?>
