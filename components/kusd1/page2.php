@@ -61,7 +61,7 @@ $YEAR = [
     <b>นิสิตเหรัญญิก </b>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span>
-        นาย/นางสาว <?= $stakeholderTreasurer->name ?>
+        <?= $stakeholderTreasurer->name ?>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         รหัสนิสิต <?= $stakeholderTreasurer->std_id ?> <br>
@@ -80,7 +80,7 @@ $YEAR = [
     <b>นิสิตประธานโครงการ </b>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span>
-        นาย/นางสาว <?= isset($headOfPj["name"]) ? $headOfPj["name"] : "________________________" ?>
+        <?= isset($headOfPj["name"]) ? $headOfPj["name"] : "________________________" ?>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         รหัสนิสิต <?= isset($headOfPjUser["idCode"]) ? substr($headOfPjUser["idCode"], 1) : "__________________" ?> <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
