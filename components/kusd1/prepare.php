@@ -77,11 +77,11 @@ $facultyBorrower = [
 //Get Borrower (Optional)
 if ($rowPj['borrowerid'] != null) {
     $borrower = getDataByAttributes("*", ["id" => $rowPj['borrowerid']], "User");
-    //Get Borrower Faculty
-    $facultyBorrower = getDataByAttributes("name", ["id" => $borrower['facultyId']], "Faculty");
-
-    //Delete Left String "b" from $borrower['idCode']
-    $borrower['idCode'] = substr($borrower['idCode'], 1);
+    if($borrower['facultyId'] != null){
+        $facultyBorrower = getDataByAttributes("name", ["id" => $borrower['facultyId']], "Faculty");
+        //Delete Left String "b"
+        $borrower['idCode'] = substr($borrower['idCode'], 1);
+    }
 }
 
 //Get Head of Project (From ESignature - READ ONLY)
