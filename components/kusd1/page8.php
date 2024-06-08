@@ -1,6 +1,6 @@
 
 <?php
-if ($rowPj["outside_kaset"] != null) {
+if ($rowPj["outside_kaset"] != null || $rowPj["outside_kaset"] != "null") {
     $jsonOutSide = json_decode($rowPj["outside_kaset"]);
     ?>
 
