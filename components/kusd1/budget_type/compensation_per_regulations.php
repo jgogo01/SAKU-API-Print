@@ -27,17 +27,18 @@ if (checkDatainArrary($compensation_per_regulations)) {
             $i = 0;
             foreach ($compensation_per_regulations as $CPR) {
                 $totalCPR += $compensation_per_regulations[$i]["amount"];
+                $i++;
             }
             //Loop For Show
-            $i = 0;
+            $j = 0;
             foreach ($compensation_per_regulations as $CPR) {
             ?>
                 <tr>
-                    <td><?= $i + 1 ?></td>
-                    <td><?= $compensation_per_regulations[$i]["label"] ?></td>
-                    <td style="text-align: right"><?= number_format($compensation_per_regulations[$i]["amount"], 2) ?></td>
+                    <td><?= $j + 1 ?></td>
+                    <td><?= $compensation_per_regulations[$j]["label"] ?></td>
+                    <td style="text-align: right"><?= number_format($compensation_per_regulations[$j]["amount"], 2) ?></td>
                 </tr>
-            <?php $i++;
+            <?php $j++;
             } ?>
             <tr style="background-color:#f5fcf0;">
                 <td colspan="2" style="text-align: center"><b>รวม</b></td>
