@@ -9,7 +9,7 @@
     <div style="position: fixed; width: 450; top:158; left:130;"><?= $rowOg['orgnameth'] ?></div>
     <div style="line-height: 1.1; position: fixed; width: 620; height: 50; top:182; left:70;"><?= $rowPj['project_name_th'] ?></div>
     <div style="position: fixed; width: 250; top:225; left:60;"><?= dateThai($rowPj['date_start_the_project'], $rowPj['date_end_the_project'], "short") ?></div>
-    <div style="position: fixed; width: 350; top:225; left:335;">ณ <?= $rowPj['project_location'] ?></div>
+    <div style="position: fixed; width: 350; top:225; left:335;"><?= $rowPj['project_location'] ?></div>
     <div style="position: fixed; width: 150; top:248; left:105;"><?= number_format($rowPj['project_bugdet_require'], 2) ?></div>
     <div style="position: fixed; width: 390; top:248; left:300;"><?= baht_text($rowPj['project_bugdet_require']) ?></div>
 
