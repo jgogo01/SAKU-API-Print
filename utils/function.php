@@ -240,6 +240,21 @@ function getObjectFromS3($key, $bucket)
     }
 }
 
+function getObjectURLS3($key, $bucket)
+{
+    global $s3;
+    try {
+        $cmd = $s3->getCommand('GetObject', [
+            'Bucket' => $bucket,
+            'Key' => $key
+        ]);
+        $request = $s3->createPresignedRequest($cmd, '+20 minutes');
+        return (string)$request->getUri();
+    } catch (Aws\S3\Exception\S3Exception $e) {
+        return null;
+    }
+}
+
 function sumJson($json)
 {
     $sum = 0;

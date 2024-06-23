@@ -24,46 +24,46 @@
     <div style="position: fixed; width: 150; top:416; left:120;">ประธานโครงการ</div>
 
     <!-- Head of Organization (Sign) -->
-    <div style="position: fixed; width: 200; height:50; top:500; left:28;"><?= isset($headOfOg) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_headOfOg["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 200; height:50; top:500; left:28;"><?= isset($headOfOg) ? "<img src=\"$sign_headOfOg\">" : "" ?></div>
     <div style="position: fixed; width: 200; top:558; left:28;"><?= isset($headOfOg["name"]) ? $headOfOg["name"] : "" ?></div>
     <div style="position: fixed; width: 140; top:603; left:70;"><?= isset($headOfOg["createdAt"]) ? dateThai($headOfOg["createdAt"], $headOfOg["createdAt"], "full") : "" ?></div>
 
     <!-- Head of Project (Sign) -->
-    <div style="position: fixed; width: 200; height:50; top:500; left:260;"><?= isset($headOfPj) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_headOfPj["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 200; height:50; top:500; left:260;"><?= isset($headOfPj) ? "<img src=\"$sign_headOfPj\">" : "" ?></div>
     <div style="position: fixed; width: 200; top:558; left:260;"><?= isset($headOfPj["name"]) ? $headOfPj["name"] : "" ?></div>
     <div style="position: fixed; width: 150; top:603; left:300;"><?= isset($headOfPj["createdAt"]) ? dateThai($headOfPj["createdAt"], $headOfPj["createdAt"], "full") : "" ?></div>
 
     <!-- Head of Project (Advisor) -->
-    <div style="position: fixed; width: 190; height:50; top:500; left:500;"><?= isset($advisorOg) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_advisor["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 190; height:50; top:500; left:500;"><?= isset($advisorOg) ? "<img src=\"$sign_advisor\">" : "" ?></div>
     <div style="position: fixed; width: 190; top:558; left:500;"><?= isset($advisorOg["name"]) ? $advisorOg["name"] : "" ?></div>
     <div style="position: fixed; width: 150; top:603; left:530;"><?= isset($advisorOg["createdAt"]) ? dateThai($advisorOg["createdAt"], $advisorOg["createdAt"], "full") : "" ?></div>
 
     <!-- SAB Head (Sign) -->
-    <div style="position: fixed; width: 175; height:60; top:705; left:40;"><?= isset($sabHead) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sabHead["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 175; height:60; top:705; left:40;"><?= isset($sabHead) ? "<img src=\"$sign_sabHead\">" : "" ?></div>
     <div style="position: fixed; width: 175; top:767; left:40;"><?= isset($sabHead["name"]) ? $sabHead["name"] : "" ?></div>
     <div style="position: fixed; width: 160; top:813; left:60;"><?= isset($sabHead["createdAt"]) ? dateThai($sabHead["createdAt"], $sabHead["createdAt"], "full") : "" ?></div>
 
     <!-- SD AT Staff (Sign) -->
-    <div style="position: fixed; width: 50; height:50; top:705; left:220;"><?= isset($sdStaff) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdStaff["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 50; height:50; top:705; left:220;"><?= isset($sdStaff) ? "<img src=\"$sign_sdStaff\">" : "" ?></div>
     <div style="position: fixed; width: 50; font-size: 12px; top:740; left:218;"><?= isset($sdStaff["createdAt"]) ? dateThai($sdStaff["createdAt"], $sdStaff["createdAt"], "short") : "" ?></div>
 
     <!-- SD AT Head (Sign) -->
-    <div style="position: fixed; width: 175; height:60; top:705; left:270;"><?= isset($sdHead) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdHead["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 175; height:60; top:705; left:270;"><?= isset($sdHead) ? "<img src=\"$sign_sdHead\">" : "" ?></div>
     <div style="position: fixed; width: 175; top:767; left:270;"><?= isset($sdHead["name"]) ? $sdHead["name"] : "" ?></div>
     <div style="position: fixed; width: 160; top:813; left:290;"><?= isset($sdHead["createdAt"]) ? dateThai($sdHead["createdAt"], $sdHead["createdAt"], "full") : "" ?></div>
 
     <!-- SD Financial (Sign) -->
-    <div style="position: fixed; width: 180; height:60; top:705; left:500;"><?= isset($sdFinancial) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdFinancial["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 180; height:60; top:705; left:500;"><?= isset($sdFinancial) ? "<img src=\"$sign_sdFinancial\">" : "" ?></div>
     <div style="position: fixed; width: 180; top:767; left:500;"><?= isset($sdFinancial["name"]) ? $sdFinancial["name"] : "" ?></div>
     <div style="position: fixed; width: 160; top:813; left:520;"><?= isset($sdFinancial["createdAt"]) ? dateThai($sdFinancial["createdAt"], $sdFinancial["createdAt"], "full") : "" ?></div>
 
     <!-- Auto Sign For SD Director -->
-    <div style="position: fixed; width: 175; height:50; top:910; left:40;"><?= isset($sdFinancial) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_sdDirector["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 175; height:50; top:910; left:40;"><?= isset($sdFinancial) ? "<img src=\"$sign_sdDirector\">" : "" ?></div>
     <div style="position: fixed; width: 175; top:966; left:40;">นายวิชาญ วงษ์สังข์</div>
     <div style="position: fixed; width: 160; top:1011; left:60;"><?= isset($sdFinancial["createdAt"]) ? dateThai($sdFinancial["createdAt"], $sdFinancial["createdAt"], "full") : "" ?></div>
 
     <!-- Auto Sign For KU Vice Director -->
-    <div style="position: fixed; width: 175; height:90; top:870; left:270;"><?= isset($sdFinancial) ? "<img src=\"data:image/png;base64, " . base64_encode($sign_kuViceDirector["Body"]) . "\">" : "" ?></div>
+    <div style="position: fixed; width: 175; height:90; top:870; left:270;"><?= isset($sdFinancial) ? "<img src=\"$sign_kuViceDirector\">" : "" ?></div>
     <div style="position: fixed; width: 175; top:966; left:270;">ผศ.รัชด ชมภูนิช</div>
     <div style="position: fixed; width: 160; top:1005; left:290;"><?= isset($sdFinancial["createdAt"]) ? dateThai($sdFinancial["createdAt"], $sdFinancial["createdAt"], "full") : "" ?></div>
 
