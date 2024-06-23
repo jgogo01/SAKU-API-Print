@@ -39,7 +39,7 @@ if ($rowPj["outside_kaset"] != null && $rowPj["outside_kaset"] != "null") {
 
     <div style="position:fixed; top:450; left:300; width:200; height:150;">
         <p style="text-align:center;">
-            <?= isset($advisorOg) ? "<img width=\"100\" src=\"data:image/png;base64, " . base64_encode($sign_advisor["Body"]) . "\">" : "" ?><br>
+            <?= isset($advisorOg) ? "<img width=\"100\" src=\"$sign_advisor\">" : "" ?><br>
             <?= isset($advisorOg["name"]) ? "(" . $advisorOg["name"] . ")" : "(......................................................)" ?> <br>
             อาจารย์ที่ปรึกษา
         </p>

@@ -89,7 +89,7 @@ if ($rowPj['borrowerid'] != null) {
 $headOfPj = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_OG_PJ_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_headOfPj = null;
 if ($headOfPj != null) {
-    $sign_headOfPj = getObjectFromS3($headOfPj["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_headOfPj = getObjectURLS3($headOfPj["image"], "saku-prod-signature");
     //Get Faculty & Phone From User Table
     $headOfPjUser = getDataByAttributes("*", ["id" => $headOfPj["userid"]], "User");
 }
@@ -97,13 +97,13 @@ if ($headOfPj != null) {
 $headOfOg = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_OG_HD_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_headOfOg = null;
 if ($headOfOg != null) {
-    $sign_headOfOg = getObjectFromS3($headOfOg["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_headOfOg = getObjectURLS3($headOfOg["image"], "saku-prod-signature");
 }
 //Get Advisor (From ESignature - READ ONLY)
 $advisorOg = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_OG_AV_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_advisor = null;
 if ($advisorOg != null) {
-    $sign_advisor = getObjectFromS3($advisorOg["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_advisor = getObjectURLS3($advisorOg["image"], "saku-prod-signature");
     //Get Phone From User Table
     $advisorOgUser = getDataByAttributes("PhoneNumber", ["id" => $advisorOg["userid"]], "User");
 }
@@ -111,30 +111,30 @@ if ($advisorOg != null) {
 $sabHead = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_SAB_HD_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_sabHead = null;
 if ($sabHead != null) {
-    $sign_sabHead = getObjectFromS3($sabHead["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_sabHead = getObjectURLS3($sabHead["image"], "saku-prod-signature");
 }
 //Get SD Staff (From ESignature - READ ONLY)
 $sdStaff = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_SD_CK_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_sdStaff = null;
 if ($sdStaff != null) {
-    $sign_sdStaff = getObjectFromS3($sdStaff["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_sdStaff = getObjectURLS3($sdStaff["image"], "saku-prod-signature");
 }
 //Get SD Head (From ESignature - READ ONLY)
 $sdHead = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_SD_AT_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_sdHead = null;
 if ($sdHead != null) {
-    $sign_sdHead = getObjectFromS3($sdHead["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_sdHead = getObjectURLS3($sdHead["image"], "saku-prod-signature");
 }
 //Get SD Financial (From ESignature - READ ONLY)
 $sdFinancial = getDataByAttributes("*", ["projectid" => $rowPj['id'], "projectStatus" => "SA1_SD_FC_Approved"], "ESignature", 1, "createdAt", "DESC");
 $sign_sdFinancial = null;
 if ($sdFinancial != null) {
-    $sign_sdFinancial = getObjectFromS3($sdFinancial["image"], getenv("S3_ESIGN_BUCKET"));
+    $sign_sdFinancial = getObjectURLS3($sdFinancial["image"], "saku-prod-signature");
 }
 //Get SD Director (From ESignature - READ ONLY)
-$sign_sdDirector = getObjectFromS3("SIGN-DIR-SDKU67.png", getenv("S3_ESIGN_BUCKET"));
+$sign_sdDirector = getObjectURLS3("SIGN-DIR-SDKU67.png", "saku-prod-signature");
 //Get KU Vice Director (From ESignature - READ ONLY)
-$sign_kuViceDirector = getObjectFromS3("SIGN-CO-DIRKU67.png", getenv("S3_ESIGN_BUCKET"));
+$sign_kuViceDirector = getObjectURLS3("SIGN-CO-DIRKU67.png", "saku-prod-signature");
 
 $currDate = date('Y-m-d');
 $currTime = date('H:i:s');
