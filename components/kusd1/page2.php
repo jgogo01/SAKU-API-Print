@@ -127,13 +127,13 @@ $YEAR = [
     <b>สอดคล้องกับอัตลักษณ์นิสิตมหาวิทยาลัยเกษตรศาสตร์ IDKU (เลือกเพียง 1 ข้อ) ดังนี้</b>
     <br>
     <span>
-        <input type="checkbox" <?= $rowPj['complianceStandard'] == "KNOWLEDGE" ? "checked=\"checked\"" : "" ?> /> สำนึกดี (Integrity)
+        <input type="checkbox" <?= $rowPj['kasetsartStudentIdentity'] == "KNOWLEDGE" ? "checked=\"checked\"" : "" ?> /> สำนึกดี (Integrity)
         &nbsp;
-        <input type="checkbox" <?= $rowPj['complianceStandard'] == "SKILLS" ? "checked=\"checked\"" : "" ?> /> มุ่งมั่น (Determination)
+        <input type="checkbox" <?= $rowPj['kasetsartStudentIdentity'] == "SKILLS" ? "checked=\"checked\"" : "" ?> /> มุ่งมั่น (Determination)
         &nbsp;
-        <input type="checkbox" <?= $rowPj['complianceStandard'] == "ETHICS" ? "checked=\"checked\"" : "" ?> /> สร้างสรรค์ (Knowledge Creation)
+        <input type="checkbox" <?= $rowPj['kasetsartStudentIdentity'] == "ETHICS" ? "checked=\"checked\"" : "" ?> /> สร้างสรรค์ (Knowledge Creation)
         &nbsp;
-        <input type="checkbox" <?= $rowPj['complianceStandard'] == "PERSONAL_CHARACTERISTICS" ? "checked=\"checked\"" : "" ?> /> สามัคคี (Unity)
+        <input type="checkbox" <?= $rowPj['kasetsartStudentIdentity'] == "PERSONAL_CHARACTERISTICS" ? "checked=\"checked\"" : "" ?> /> สามัคคี (Unity)
     </span>
 </div>
 
