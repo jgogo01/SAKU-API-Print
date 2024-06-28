@@ -21,20 +21,34 @@
                 ของเป้าหมายที่วางไว้
             </td>
             <td style="font-size: 14pt">
-                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;8000&nbsp;&nbsp;&nbsp;</span> คน<br>
-                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                <?php
+                $jsonNumberParticipant = json_decode($rowPj['number_of_project_participants']);
+                $jsonExpectedParticipant = json_decode($rowPjExp['number_of_participants']);
+                $totalParticipant = 0;
+                if (isset($jsonExpectedParticipant->S)) {
+                    $totalParticipant += $jsonExpectedParticipant->S;
+                }
+                if (isset($jsonExpectedParticipant->P)) {
+                    $totalParticipant += $jsonExpectedParticipant->P;
+                }
+                if (isset($jsonExpectedParticipant->G)) {
+                    $totalParticipant += $jsonExpectedParticipant->G;
+                }
+                ?>
+                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;<?= isset($jsonNumberParticipant->S) ? $jsonNumberParticipant->S : "0" ?>&nbsp;&nbsp;&nbsp;</span> คน<br>
+                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;<?= calculate_percentage_for_display($jsonNumberParticipant->S ,$totalParticipant) ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
                 <input type="checkbox" checked="checked" /> บรรลุ<br>
                 <input type="checkbox" checked="checked" /> ไม่บรรลุ
             </td>
             <td style="font-size: 14pt">
-                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;8000&nbsp;&nbsp;&nbsp;</span> คน<br>
-                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;<?= isset($jsonNumberParticipant->P) ? $jsonNumberParticipant->P : "0" ?>&nbsp;&nbsp;&nbsp;</span> คน<br>
+                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;<?= calculate_percentage_for_display($jsonNumberParticipant->P ,$totalParticipant) ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
                 <input type="checkbox" checked="checked" /> บรรลุ<br>
                 <input type="checkbox" checked="checked" /> ไม่บรรลุ
             </td>
             <td style="font-size: 14pt">
-                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;8000&nbsp;&nbsp;&nbsp;</span> คน<br>
-                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+                จำนวน<span class="underline">&nbsp;&nbsp;&nbsp;<?= isset($jsonNumberParticipant->G) ? $jsonNumberParticipant->G : "0" ?>&nbsp;&nbsp;&nbsp;</span> คน<br>
+                ร้อยละ<span class="underline">&nbsp;&nbsp;&nbsp;<?= calculate_percentage_for_display($jsonNumberParticipant->G ,$totalParticipant) ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
                 <input type="checkbox" checked="checked" /> บรรลุ<br>
                 <input type="checkbox" checked="checked" /> ไม่บรรลุ
             </td>

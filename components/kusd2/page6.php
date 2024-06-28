@@ -1,6 +1,6 @@
 <div style="width:100%;">
     <img src="assets/ku_sd_online.png" width="200">
-    <h3 style="line-height: 0; padding: 0; margin:0;">ภาพภ่ายโครงการ <?= $rowPj['project_name_th'] ?></h3>
+    <h3 style="line-height: 0; padding: 0; margin:0;">ภาพถ่ายโครงการ <?= $rowPj['project_name_th'] ?></h3>
     <h4>วันที่ <?= dateThai($rowPj['date_start_the_project'], $rowPj['date_end_the_project'], "full") ?></h4>
     <h4>ณ <?= $rowPj['project_location'] ?></h4>
 </div>
@@ -14,7 +14,6 @@ $pictureAll = pg_fetch_all($resultPicture);
 
 //Change to Array
 $pictureAll = array_column($pictureAll, 'file_path');
-
 ?>
 
 <table width="100%">

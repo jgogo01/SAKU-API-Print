@@ -420,3 +420,21 @@ function jwt_decode($secretKey, $jwt){
         return false;
     }
 }
+
+function format_percentage($percentage, $precision = 2) {
+    return round($percentage, $precision) . '%';
+}
+
+function calculate_percentage($number, $total) {
+
+    // Can't divide by zero so let's catch that early.
+    if ($total == 0) {
+        return 0;
+    }
+
+    return ($number / $total) * 100;
+}
+
+function calculate_percentage_for_display($number, $total) {
+    return format_percentage(calculate_percentage($number, $total));
+}
