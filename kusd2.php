@@ -88,6 +88,8 @@ ob_start();
     // $import_page = $mpdf->ImportPage(4);
     // $mpdf->UseTemplate($import_page);
 
+    // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // //Page 5
     // require("components/kusd2/page5.php");
 
@@ -102,22 +104,26 @@ ob_start();
     // $mpdf->UseTemplate($import_page);
 
     // //Page 6
-    // require("components/kusd2/page6.php");
+    ob_start();
+    $mpdf->addPage();
+    require("components/kusd2/page6.php");
 
-    // //Page 6 Content
-    // $html = ob_get_contents();
-    // ob_end_clean();
-    // $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-    // $mpdf->WriteHTML($html);
+    //Page 6 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
 
-    //Page 7
-    // require("components/kusd2/page7.php");
+    // Page 7
+    ob_start();
+    $mpdf->addPage();
+    require("components/kusd2/page7.php");
 
-    // //Page 7 Content
-    // $html = ob_get_contents();
-    // ob_end_clean();
-    // $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-    // $mpdf->WriteHTML($html);
+    //Page 7 Content
+    $html = ob_get_contents();
+    ob_end_clean();
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
 
     $mpdf->Output("KUSD2_" . time() . ".pdf", 'I');
     ?>
