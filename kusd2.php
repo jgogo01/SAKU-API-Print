@@ -33,31 +33,31 @@ ob_start();
 
 <body>
     <?php
-    // require("components/kusd2/page1.php");
+    require("components/kusd2/page1.php");
 
-    // //Page 1 Content
-    // $html = ob_get_contents();
-    // ob_end_clean();
-    // $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
-    // $mpdf->WriteHTML($html);
-
-    // //Template Page 1
-    // $mpdf->SetSourceFile("assets/kusd2_online.pdf");
-    // $import_page = $mpdf->ImportPage(1);
-    // $mpdf->UseTemplate($import_page);
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // //Page 2
-    // ob_start();
-    $mpdf->addPage();
-    require("components/kusd2/page2.php");
-
-    //Page 2 Content
+    //Page 1 Content
     $html = ob_get_contents();
     ob_end_clean();
     $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
     $mpdf->WriteHTML($html);
+
+    //Template Page 1
+    $mpdf->SetSourceFile("assets/kusd2_online.pdf");
+    $import_page = $mpdf->ImportPage(1);
+    $mpdf->UseTemplate($import_page);
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // //Page 2
+    // ob_start();
+    // $mpdf->addPage();
+    // require("components/kusd2/page2.php");
+
+    // //Page 2 Content
+    // $html = ob_get_contents();
+    // ob_end_clean();
+    // $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    // $mpdf->WriteHTML($html);
 
 
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +110,7 @@ ob_start();
     // $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
     // $mpdf->WriteHTML($html);
 
-    // //Page 7
+    //Page 7
     // require("components/kusd2/page7.php");
 
     // //Page 7 Content

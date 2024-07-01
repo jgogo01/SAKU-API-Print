@@ -27,9 +27,9 @@ if (($open = fopen($rowURLExcel, "r")) !== false) {
                     <tr>
                         <td style="text-align: center;"><?= $i ?></td>
                         <td style="text-align: center;"><?= $data[4] != null ? $data[4] : "-" ?></td>
-                        <td><?= $data[5] != null ? $data[5] : "" ?></td>
-                        <td style="text-align: center;"><?= $data[7] && $data[8] != null ?  $data[7] . "/" . $data[8] : "-" ?></td>
-                        <td><?= match ($data[9]) {
+                        <td><?= $data[5] != null ? $data[5] . $data[6] : "" ?></td>
+                        <td style="text-align: center;"><?= $data[7] && $data[8] != null ?  $data[7] . "/" . $data[9] : "-" ?></td>
+                        <td style="text-align: center;"><?= match ($data[10]) {
                                 "S" => "คณะทำงาน",
                                 "P" => "ผู้เข้าร่วม",
                                 "G" => "บุคคลทั่วไป",
